@@ -1,5 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+* To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -38,7 +38,7 @@ public class BookCRUD {
             Statement st = cnx.createStatement();
             st.executeUpdate(request);
             System.out.println("Book added !");
-        } catch (SQLException ex) {
+        }   catch (SQLException ex) {
             System.out.println(ex.getMessage());}
     }
     public List<Book> listBooks(){
@@ -80,13 +80,13 @@ public class BookCRUD {
     
         public void UpdateBook(Book b,int isbn){
         try {
-            String request="UPDATE book set title=?,author=?, price=? WHERE isbnd=?";
+            String request="UPDATE book set title=?,author=?, price=? WHERE isbn=?";
             PreparedStatement pst = cnx.prepareStatement(request);
             pst.setString(1, b.getTitle());
             pst.setString(2, b.getAuthor());
             pst.setInt(3, isbn);
             pst.executeUpdate();
-            System.out.println("Personne modifié");
+            System.out.println("Book updated");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());        }
     }

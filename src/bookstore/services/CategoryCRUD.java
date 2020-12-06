@@ -26,7 +26,7 @@ public class CategoryCRUD {
 
      
      //ADD_Book
-     public void addBook(Category cat){
+     public void addCategory(Category cat){
         try {
             String request = "INSERT INTO category(id,name,description) VALUES"
                     +"('"+cat.getId()+"'"

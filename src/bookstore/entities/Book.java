@@ -46,8 +46,6 @@ public class Book {
         this.EditingHouse = EditingHouse;
     }
 
-
-
     public int getIsbn() {
         return isbn;
     }

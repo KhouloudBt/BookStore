@@ -6,7 +6,9 @@
 package bookstore;
 
 import bookstore.entities.Book;
+import bookstore.entities.Category;
 import bookstore.services.BookCRUD;
+import bookstore.services.CategoryCRUD;
 
 /**
  *
@@ -20,10 +22,12 @@ public class BookStore {
     public static void main(String[] args) {
         // TODO code application logic here        
         MyConnection cn = MyConnection.getInstance();
-        Book bk = new Book(5423,"Khouloud","Rami",5.f,"hello");
+        Book bk = new Book(67889,"Khouloud","Rami",5.f,"hello");
         BookCRUD br= new BookCRUD();
         br.addBook(bk);
-        
+        Category cat= new Category("Romance","For romantic books");
+        CategoryCRUD catcr= new CategoryCRUD();
+        catcr.addCategory(cat);       
 
     }
     
