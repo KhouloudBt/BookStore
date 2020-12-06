@@ -1,31 +1,13 @@
 /*
  * Empty Stylesheet file.
  */
-@import url('https://fonts.googleapis.com/css?family=Codystar:300&display=swap');
-
- .neons {
-	 -fx-font-size: 9rem;
-	 -fx-text-align: center;
-	 -fx-font-weight: bold;
-	 -fx--webkit-animation: glow 2s ease-in-out infinite alternate;
-	 -fx--moz-animation: glow 2s ease-in-out infinite alternate;
-	 -fx-animation: glow 2s ease-in-out infinite alternate;
-}
- @-webkit-keyframes glow {
-	 from {
-		 -fx-color: #fff;
-		 -fx-text-shadow: 0 0 10px #00fff2, 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2, 0 0 50px #00fff2, 0 0 60px #00fff2, 0 0 70px #00fff2, 0 0 90px #00fff2;
-	}
-	 to {
-		 -fx-color: gray;
-		 -fx-text-shadow: 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2, 0 0 50px #00fff2, 0 0 60px #00fff2, 0 0 70px #00fff2, 0 0 80px #00fff2, 0 1 90px #00fff2;
-	}
-}
 .mainFxmlClass {
 -fx-background-color:linear-gradient(from 25% 25% to 100% 100%, #9d14dc, #005eff);
 
 }
-
+.save_btn{
+-fx-background-image: linear-gradient(to right top, #005eff, #4e53f9, #6f45f1, #8833e7, #9d14dc);
+}
 
 
 

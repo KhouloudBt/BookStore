@@ -7,7 +7,9 @@ package bookstore.gui.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -16,13 +18,22 @@ import javafx.fxml.Initializable;
  */
 public class AddCategoryController implements Initializable {
 
+    @FXML
+    private TextField isbn;
+    @FXML
+    private TextField title;
+    @FXML
+    private TextField author;
+    @FXML
+    private TextField price;
+
     /**
-     * 
+     *
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
 }
