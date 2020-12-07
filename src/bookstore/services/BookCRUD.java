@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -41,8 +42,8 @@ public class BookCRUD {
         }   catch (SQLException ex) {
             System.out.println(ex.getMessage());}
     }
-    public List<Book> listBooks(){
-        List<Book> myList = new ArrayList<Book>();
+    public ArrayList<Book> listBooks(){
+        ArrayList<Book> myList = new ArrayList<Book>();
         try {
             String request = "select * from book";
             Statement st = cnx.createStatement();
@@ -90,4 +91,14 @@ public class BookCRUD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());        }
     }
+        public List<Book> SearchByTitle(String title)
+        {
+            ArrayList <Book> l = this.listBooks();
+           return  l.stream().filter(p->p.getTitle()==title).collect(Collectors.toList());
+        }
+         public List<Book> SearchByAuthor(String title)
+        {
+            ArrayList <Book> l = this.listBooks();
+           return  l.stream().filter(p->p.getTitle()==title).collect(Collectors.toList());
+        }
 }

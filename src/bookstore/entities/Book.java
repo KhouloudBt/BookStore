@@ -26,8 +26,8 @@ public class Book {
     private String EditingHouse;
     private User owner;
     private BufferedImage cover;
-    private List<Category> categories;
-    private List<Resource> ResourcesList;
+    private List<Category> categories= new ArrayList<Category>();
+    private List<Resource> ResourcesList = new ArrayList<Resource>();
 
     public Book() {
     }
