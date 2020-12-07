@@ -7,6 +7,7 @@ package bookstore.services;
 
 import bookstore.MyConnection;
 import bookstore.entities.Book;
+import bookstore.entities.Category;
 import bookstore.temp.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,9 +36,17 @@ public class BookCRUD {
                     +",'"+book.getAuthor()+"'"
                     +",'"+book.getPrice()+"'"
                     +",'"+book.getEditingHouse()+"')";
-            
             Statement st = cnx.createStatement();
             st.executeUpdate(request);
+
+            for (Category cat: book.getCategories())
+            {
+                String request2 = "INSERT INTO book_category() VALUES"
+                    +"('"+book.getIsbn()+"'"
+                    +",'"+cat.getId()+"')";
+                st.executeUpdate(request2);
+
+            }
             System.out.println("Book added !");
         }   catch (SQLException ex) {
             System.out.println(ex.getMessage());}
@@ -94,12 +103,12 @@ public class BookCRUD {
         public List<Book> SearchByTitle(String title)
         {
             ArrayList <Book> l = this.listBooks();
-           return  l.stream().filter(p->p.getTitle()==title).collect(Collectors.toList());
+           return  l.stream().filter(p->p.getTitle().equals(title)).collect(Collectors.toList());
         }
          public List<Book> SearchByAuthor(String Author)
         {
             ArrayList <Book> l = this.listBooks();
-           return  l.stream().filter(p->p.getAuthor()==Author).collect(Collectors.toList());
+           return  l.stream().filter(p->p.getAuthor().equals(Author)).collect(Collectors.toList());
         }
          public List<Book> SearchByISBN(int isbn)
         {

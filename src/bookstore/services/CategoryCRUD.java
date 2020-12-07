@@ -84,5 +84,11 @@ public class CategoryCRUD {
             System.out.println(ex.getMessage());        }
     }
     
+        public boolean CategoryExists(String Name)
+        {
+            //Return True if the Category already exists
+            List <Category> listCat = this.listCategories();
+            return (listCat.stream().filter(c -> c.getName().equals(Name)).count()!=0);
+        }
     
 }

@@ -1,87 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.AutoCompleteTextField?>
-<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
-<?import com.gluonhq.charm.glisten.control.DropdownButton?>
-<?import java.net.URL?>
-<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.effect.MotionBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="650.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.AddCategoryController">
-    <stylesheets>
-        <URL value="@addcategory.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="650.0" styleClass="mainFxmlClass" stylesheets="@addbook.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.AddCategoryController">
    <children>
-      <AnchorPane layoutX="41.0" layoutY="113.0" prefHeight="351.0" prefWidth="273.0" style="-fx-background-color: white;">
+      <AnchorPane layoutX="41.0" layoutY="113.0" prefHeight="351.0" prefWidth="273.0" style="-fx-background-color: white;" styleClass="card" stylesheets="@addbook.css">
          <children>
-            <AutoCompleteTextField id="isbn" fx:id="isbn" layoutX="117.0" layoutY="58.0" />
+            <TextField id="isbn" fx:id="isbn" layoutX="107.0" layoutY="58.0" />
             <Label layoutX="27.0" layoutY="75.0" text="ISBN:" />
-            <AutoCompleteTextField id="isbn" fx:id="title" layoutX="117.0" layoutY="118.0" />
+            <TextField id="isbn" fx:id="title" layoutX="107.0" layoutY="118.0" />
             <Label layoutX="27.0" layoutY="135.0" text="Title:" />
-            <AutoCompleteTextField id="isbn" fx:id="author" layoutX="117.0" layoutY="175.0" />
+            <TextField id="isbn" fx:id="author" layoutX="107.0" layoutY="175.0" />
             <Label layoutX="26.0" layoutY="192.0" text="Author:" />
-            <AutoCompleteTextField id="isbn" fx:id="price" layoutX="117.0" layoutY="232.0" />
+            <TextField id="isbn" fx:id="price" layoutX="107.0" layoutY="232.0" />
             <Label layoutX="26.0" layoutY="249.0" text="Price" />
          </children>
       </AnchorPane>
-      <Label contentDisplay="CENTER" ellipsisString="" layoutX="247.0" layoutY="21.0" prefHeight="44.0" prefWidth="166.0" text="Add Book" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+      <Label contentDisplay="CENTER" ellipsisString="" layoutX="238.0" layoutY="31.0" prefHeight="44.0" prefWidth="166.0" text="Add Book" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font name="Arial Bold" size="29.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="325.0" layoutY="113.0" prefHeight="351.0" prefWidth="273.0" style="-fx-background-color: white;">
+      <AnchorPane layoutX="325.0" layoutY="113.0" prefHeight="351.0" prefWidth="273.0" style="-fx-background-color: white;" styleClass="card" stylesheets="@addbook.css">
          <children>
             <Label layoutX="26.0" layoutY="135.0" text="Category:" />
-            <AutoCompleteTextField id="isbn" fx:id="title1" layoutX="116.0" layoutY="80.0" />
-            <Label layoutX="21.0" layoutY="93.0" text="Editing House:" />
-            <Label layoutX="26.0" layoutY="192.0" text="Resource:" />
-            <Label layoutX="26.0" layoutY="249.0" text="cover" />
-            <DropdownButton fx:id="category" layoutX="116.0" layoutY="131.0">
-                <items>
-                    <MenuItem text="Choice 1" />
-                    <MenuItem text="Choice 2" />
-                    <MenuItem text="Choice 3" />
-                </items>
-            </DropdownButton>
-            <BottomNavigationButton layoutX="107.0" layoutY="185.0" style="-fx-background-color: grey;" text="Choose file...">
-               <effect>
-                  <MotionBlur />
-               </effect>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </BottomNavigationButton>
-            <BottomNavigationButton layoutX="110.0" layoutY="251.0" prefWidth="93.0" style="-fx-background-color: grey;" text="Choose file...">
-               <effect>
-                  <MotionBlur />
-               </effect>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </BottomNavigationButton>
+            <TextField id="isbn" fx:id="title1" layoutX="116.0" layoutY="63.0" />
+            <Label layoutX="21.0" layoutY="76.0" text="Editing House:" />
+            <Label layoutX="26.0" layoutY="202.0" text="Resource:" />
+            <Label layoutX="26.0" layoutY="259.0" text="cover" />
+            <Button fx:id="resource" layoutX="107.0" layoutY="198.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="152.0" style="-fx-background-color: grey;" text="Choose file .." />
+            <Button fx:id="cover" layoutX="110.0" layoutY="254.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: grey;" text="Choose file .." />
+            <ChoiceBox fx:id="category" layoutX="108.0" layoutY="130.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
-      <BottomNavigationButton fx:id="btn_save" layoutX="171.0" layoutY="492.0" prefHeight="32.0" prefWidth="130.0" styleClass="mainFxmlClass" text="save">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-         <effect>
-            <InnerShadow />
-         </effect>
-      </BottomNavigationButton>
-      <BottomNavigationButton cancelButton="true" layoutX="330.0" layoutY="492.0" prefHeight="32.0" prefWidth="124.0" style="-fx-background-color: #adaeb3;" text="Cancel" />
       <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="25.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/home.PNG" />
          </image></ImageView>
+      <Button layoutX="163.0" layoutY="497.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="119.0" styleClass="mainFxmlClass" stylesheets="@addbook.css" text="Save" />
+      <Button cancelButton="true" defaultButton="true" layoutX="325.0" layoutY="497.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="119.0" style="-fx-background-color: grey;" stylesheets="@addbook.css" text="Cancel" />
    </children>
    <effect>
       <Glow />
