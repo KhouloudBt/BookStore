@@ -47,7 +47,7 @@
                     <MenuItem text="Choice 3" />
                 </items>
             </DropdownButton>
-            <BottomNavigationButton layoutX="107.0" layoutY="185.0" style="-fx-background-color: grey;" text="Choose file...">
+            <BottomNavigationButton layoutX="107.0" layoutY="185.0" style="-fx-background-color: grey; -fx-border-radius: 50px;" text="Choose file...">
                <effect>
                   <MotionBlur />
                </effect>
