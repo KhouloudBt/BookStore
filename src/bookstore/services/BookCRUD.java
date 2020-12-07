@@ -96,9 +96,14 @@ public class BookCRUD {
             ArrayList <Book> l = this.listBooks();
            return  l.stream().filter(p->p.getTitle()==title).collect(Collectors.toList());
         }
-         public List<Book> SearchByAuthor(String title)
+         public List<Book> SearchByAuthor(String Author)
         {
             ArrayList <Book> l = this.listBooks();
-           return  l.stream().filter(p->p.getTitle()==title).collect(Collectors.toList());
+           return  l.stream().filter(p->p.getAuthor()==Author).collect(Collectors.toList());
+        }
+         public List<Book> SearchByISBN(int isbn)
+        {
+            ArrayList <Book> l = this.listBooks();
+           return  l.stream().filter(p->p.getIsbn()==isbn).collect(Collectors.toList());
         }
 }
