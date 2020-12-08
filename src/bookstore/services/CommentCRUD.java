@@ -5,8 +5,8 @@
  */
 package bookstore.services;
 
-import edu.bookstore.connection.MyConnection;
-import edu.bookstore.models.Comment;
+import bookstore.MyConnection;
+import bookstore.entities.Comment;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
