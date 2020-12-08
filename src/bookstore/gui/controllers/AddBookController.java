@@ -15,12 +15,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import org.controlsfx.control.CheckComboBox;
 
 /**
  * FXML Controller class
@@ -48,13 +49,13 @@ public class AddBookController implements Initializable {
     @FXML
     private Button cover;
     @FXML
-    private ChoiceBox<String> category;
+    private CheckComboBox<String> category;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         CategoryCRUD cr = new CategoryCRUD();
-        category.setItems(cr.ListNames());
-        
+        ObservableList<String> obs = cr.ListNames();
+        category.getItems().addAll(obs);
 
     }
 
@@ -67,6 +68,8 @@ public class AddBookController implements Initializable {
     @FXML
     private void Save(ActionEvent event) {
         BookCRUD br = new BookCRUD();
+        CategoryCRUD cr = new CategoryCRUD();
+
         RegexTests rgx = new RegexTests();
 
         if (!rgx.IsvalidIsbn(isbn_txt)) {
@@ -76,20 +79,27 @@ public class AddBookController implements Initializable {
         } else if (!rgx.isValidPrice(price_txt)) {
             System.out.println("Book already exists !");
         }
+        ObservableList<String> checked_categories_name = category.getCheckModel().getCheckedItems();
         List<Category> categories;
         categories = new ArrayList<Category>();
+        for (Object cat_name : checked_categories_name) {
+            categories.add(cr.SearchByName(cat_name.toString()));
+        }
         MyConnection cnx = MyConnection.getInstance();
-        Book b = new Book(Integer.parseInt(isbn_txt), title_txt,);
-        br.addBook(b);
-    }
-    Book b = new Book
-    
-}
 
-@FXML
-        private void cancel(ActionEvent event) {
-        Name.setText("");
-        description.setText("");
+        // Book b = new Book(Integer.parseInt(isbn_txt), title_txt,categories);
+        // br.addBook(b);
     }
+
+    @FXML
+    private void cancel(ActionEvent event) {
+         isbn.setText("");
+         author.setText("");
+         EditingHouse.setText("");
+         price.setText("");
+         title.setText("");
+    }
+
+}
 
 

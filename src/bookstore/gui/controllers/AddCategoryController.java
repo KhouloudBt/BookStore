@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -28,26 +29,7 @@ public class AddCategoryController implements Initializable {
 
     private TextField Name;
     private TextArea description;
-    @FXML
-    private TextField isbn;
-    @FXML
-    private TextField title;
-    @FXML
-    private TextField author;
-    @FXML
-    private TextField price;
 
-    @FXML
-    private Button resource;
-    @FXML
-    private Button cover;
-    @FXML
-    private ChoiceBox<?> category;
-    @FXML
-    private Button btn_save;
-    @FXML
-    private Button btn_cancel;
-    
    
     
 

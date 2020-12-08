@@ -99,6 +99,12 @@ public class CategoryCRUD {
             return (listCat.stream().filter(c -> c.getName().equals(Name)).count()!=0);
         }
         
+        public Category SearchByName(String name)
+        {   List <Category> listCat = this.listCategories();
+
+            return (listCat.stream().filter(c -> c.getName().equals(name)).collect(Collectors.toList()).get(0));
+        }
+        
         
         
     

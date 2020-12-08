@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="650.0" styleClass="mainFxmlClass" stylesheets="@addbook.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.AddCategoryController">
    <children>
-      <AnchorPane layoutX="165.0" layoutY="113.0" prefHeight="364.0" prefWidth="404.0" style="-fx-background-color: white;" styleClass="card" stylesheets="@addbook.css">
+      <AnchorPane layoutX="124.0" layoutY="113.0" prefHeight="439.0" prefWidth="445.0" style="-fx-background-color: white;" styleClass="card" stylesheets="@addbook.css">
          <children>
             <TextField id="isbn" fx:id="Name" layoutX="107.0" layoutY="58.0" prefHeight="26.0" prefWidth="258.0" />
             <Label layoutX="27.0" layoutY="75.0" text="Name:" textFill="#969292" />
@@ -30,7 +30,7 @@
          <image>
             <Image url="@img/home.PNG" />
          </image></ImageView>
-      <Button fx:id="btn_save" layoutX="193.0" layoutY="497.0" mnemonicParsing="false" onAction="#Save" prefHeight="32.0" prefWidth="119.0" styleClass="mainFxmlClass" stylesheets="@addbook.css" text="Save" textFill="WHITE">
+      <Button fx:id="btn_save" layoutX="219.0" layoutY="497.0" mnemonicParsing="false" onAction="#Save" prefHeight="32.0" prefWidth="119.0" styleClass="mainFxmlClass" stylesheets="@addbook.css" text="Save" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.CheckComboBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="650.0" styleClass="mainFxmlClass" stylesheets="@addbook.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.AddCategoryController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="650.0" styleClass="mainFxmlClass" stylesheets="@addbook.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.AddBookController">
    <children>
       <AnchorPane layoutX="41.0" layoutY="113.0" prefHeight="351.0" prefWidth="273.0" style="-fx-background-color: white;" styleClass="card" stylesheets="@addbook.css">
          <children>
@@ -22,6 +23,7 @@
             <Label layoutX="26.0" layoutY="192.0" text="Author:" />
             <TextField id="isbn" fx:id="price" layoutX="107.0" layoutY="232.0" />
             <Label layoutX="26.0" layoutY="249.0" text="Price" />
+            <TabPane layoutX="38.0" layoutY="-69.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" />
          </children>
       </AnchorPane>
       <Label contentDisplay="CENTER" ellipsisString="" layoutX="238.0" layoutY="31.0" prefHeight="44.0" prefWidth="166.0" text="Add Book" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
@@ -38,7 +40,7 @@
             <Label layoutX="26.0" layoutY="259.0" text="cover" />
             <Button fx:id="resource" layoutX="107.0" layoutY="198.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="152.0" style="-fx-background-color: grey;" text="Choose file .." />
             <Button fx:id="cover" layoutX="110.0" layoutY="254.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: grey;" text="Choose file .." />
-            <ChoiceBox fx:id="category" layoutX="108.0" layoutY="130.0" prefWidth="150.0" />
+            <CheckComboBox fx:id="category" layoutX="114.0" layoutY="121.0" prefHeight="28.0" prefWidth="139.0" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="25.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
@@ -47,6 +49,7 @@
          </image></ImageView>
       <Button fx:id="btn_save" layoutX="163.0" layoutY="497.0" mnemonicParsing="false" onAction="#Save" prefHeight="32.0" prefWidth="119.0" styleClass="mainFxmlClass" stylesheets="@addbook.css" text="Save" />
       <Button fx:id="btn_cancel" cancelButton="true" defaultButton="true" layoutX="325.0" layoutY="497.0" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" prefWidth="119.0" style="-fx-background-color: grey;" stylesheets="@addbook.css" text="Cancel" />
+      <TabPane layoutX="362.0" layoutY="-14.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" />
    </children>
    <effect>
       <Glow />
