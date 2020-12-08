@@ -45,7 +45,6 @@ public class BookCRUD {
                     +"('"+book.getIsbn()+"'"
                     +",'"+cat.getId()+"')";
                 st.executeUpdate(request2);
-
             }
             System.out.println("Book added !");
         }   catch (SQLException ex) {
@@ -100,6 +99,13 @@ public class BookCRUD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());        }
     }
+        
+        public boolean BookExits(int isbn)
+        {
+             List <Book> listBook = this.listBooks();
+            return (listBook.stream().filter(c -> c.getIsbn()==isbn).count()!=0);
+            
+        }
         public List<Book> SearchByTitle(String title)
         {
             ArrayList <Book> l = this.listBooks();

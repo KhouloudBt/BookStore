@@ -26,14 +26,30 @@ import javafx.scene.control.TextField;
  */
 public class AddCategoryController implements Initializable {
 
+    private TextField Name;
+    private TextArea description;
+    @FXML
+    private TextField isbn;
+    @FXML
+    private TextField title;
+    @FXML
+    private TextField author;
+    @FXML
+    private TextField price;
+
+    @FXML
+    private Button resource;
+    @FXML
+    private Button cover;
+    @FXML
+    private ChoiceBox<?> category;
     @FXML
     private Button btn_save;
     @FXML
     private Button btn_cancel;
-    @FXML
-    private TextField Name;
-    @FXML
-    private TextArea description;
+    
+   
+    
 
     /**
      * Initializes the controller class.
@@ -41,7 +57,7 @@ public class AddCategoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
+    }    
 
     @FXML
     private void Save(ActionEvent event) {
@@ -66,5 +82,5 @@ public class AddCategoryController implements Initializable {
         Name.setText("");
         description.setText("");
     }
-
+    
 }

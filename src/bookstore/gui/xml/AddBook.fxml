@@ -32,7 +32,7 @@
       <AnchorPane layoutX="325.0" layoutY="113.0" prefHeight="351.0" prefWidth="273.0" style="-fx-background-color: white;" styleClass="card" stylesheets="@addbook.css">
          <children>
             <Label layoutX="26.0" layoutY="135.0" text="Category:" />
-            <TextField id="isbn" fx:id="title1" layoutX="116.0" layoutY="63.0" />
+            <TextField id="isbn" fx:id="EditingHouse" layoutX="116.0" layoutY="63.0" />
             <Label layoutX="21.0" layoutY="76.0" text="Editing House:" />
             <Label layoutX="26.0" layoutY="202.0" text="Resource:" />
             <Label layoutX="26.0" layoutY="259.0" text="cover" />
@@ -45,8 +45,8 @@
          <image>
             <Image url="@img/home.PNG" />
          </image></ImageView>
-      <Button layoutX="163.0" layoutY="497.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="119.0" styleClass="mainFxmlClass" stylesheets="@addbook.css" text="Save" />
-      <Button cancelButton="true" defaultButton="true" layoutX="325.0" layoutY="497.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="119.0" style="-fx-background-color: grey;" stylesheets="@addbook.css" text="Cancel" />
+      <Button fx:id="btn_save" layoutX="163.0" layoutY="497.0" mnemonicParsing="false" onAction="#Save" prefHeight="32.0" prefWidth="119.0" styleClass="mainFxmlClass" stylesheets="@addbook.css" text="Save" />
+      <Button fx:id="btn_cancel" cancelButton="true" defaultButton="true" layoutX="325.0" layoutY="497.0" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" prefWidth="119.0" style="-fx-background-color: grey;" stylesheets="@addbook.css" text="Cancel" />
    </children>
    <effect>
       <Glow />

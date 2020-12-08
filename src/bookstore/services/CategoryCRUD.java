@@ -16,6 +16,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -83,6 +86,12 @@ public class CategoryCRUD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());        }
     }
+        public ObservableList<String> ListNames()
+        {
+           return this.listCategories().stream()
+                   .map(c->c.getName())
+                   .collect(Collectors.toCollection(FXCollections::observableArrayList));
+        }
     
         public boolean CategoryExists(String Name)
         {
@@ -90,5 +99,8 @@ public class CategoryCRUD {
             List <Category> listCat = this.listCategories();
             return (listCat.stream().filter(c -> c.getName().equals(Name)).count()!=0);
         }
+        
+        
+        
     
 }
