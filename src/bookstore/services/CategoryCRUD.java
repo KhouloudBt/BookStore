@@ -8,7 +8,6 @@ package bookstore.services;
 import bookstore.MyConnection;
 import bookstore.entities.Book;
 import bookstore.entities.Category;
-import bookstore.temp.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

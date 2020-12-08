@@ -23,6 +23,15 @@ public class RegexTests {
     {
         return (isbn.length()==0 || Pattern.matches("[0-9]+",isbn));
     }
+    public Boolean isValidMail(String mail)
+    {
+        return Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$",mail);
+    }
+       public Boolean isValidPrice(String price)
+    {
+        return Pattern.matches("[0-9]+([,.][0-9]{1,2})?",price);
+    }
+    
     
    
 }

@@ -5,7 +5,6 @@
  */
 package bookstore.entities;
 
-import bookstore.temp.User;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
