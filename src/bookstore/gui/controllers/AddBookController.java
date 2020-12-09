@@ -11,6 +11,7 @@ import bookstore.entities.Category;
 import bookstore.services.BookCRUD;
 import bookstore.services.CategoryCRUD;
 import bookstore.services.RegexTests;
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import org.controlsfx.control.CheckComboBox;
 
 /**
@@ -50,20 +54,39 @@ public class AddBookController implements Initializable {
     private Button cover;
     @FXML
     private CheckComboBox<String> category;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        CategoryCRUD cr = new CategoryCRUD();
-        ObservableList<String> obs = cr.ListNames();
-        category.getItems().addAll(obs);
-
-    }
-
+    List resourcesPaths;
+    String coverImagePath;
+    List<String> resourceExtensions;
+    List<String> coverExtensions;
     private final String isbn_txt = isbn.getText();
     private final String title_txt = title.getText();
     private final String author_txt = author.getText();
     private final String price_txt = price.getText();
     private final String EditingHouse_txt = EditingHouse.getText();
+    @FXML
+    private Label resources_paths;
+    @FXML
+    private Label cover_path;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        CategoryCRUD cr = new CategoryCRUD();
+        ObservableList<String> obs = cr.ListNames();
+        resourcesPaths = new ArrayList<String>();
+        coverImagePath = "";
+        category.getItems().addAll(obs);
+        resourceExtensions = new ArrayList<>();
+        coverExtensions = new ArrayList<>();
+        resourceExtensions.add(".pdf");
+        resourceExtensions.add(".epub");
+        resourceExtensions.add(".fb2");
+        resourceExtensions.add("html");
+        coverExtensions.add(".jpg");
+        coverExtensions.add("png");
+        coverExtensions.add(".jpeg");
+
+    }
 
     @FXML
     private void Save(ActionEvent event) {
@@ -93,13 +116,33 @@ public class AddBookController implements Initializable {
 
     @FXML
     private void cancel(ActionEvent event) {
-         isbn.setText("");
-         author.setText("");
-         EditingHouse.setText("");
-         price.setText("");
-         title.setText("");
+        isbn.setText("");
+        author.setText("");
+        EditingHouse.setText("");
+        price.setText("");
+        title.setText("");
+    }
+
+    @FXML
+    private void multiFileChooser(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().add(new ExtensionFilter("Book files", resourceExtensions));
+        List<File> f = fc.showOpenMultipleDialog(null);
+        for (File file : f) {
+            resourcesPaths.add(file.getAbsolutePath());
+        }
+    }
+
+    @FXML
+    private void coverChooser(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().add(new ExtensionFilter("Image files", coverExtensions));
+        File f = fc.showOpenDialog(null);
+        if (f != null)
+        {
+            cover_path.setText(f.getAbsolutePath());
+        }
+        
     }
 
 }
-
-

@@ -38,9 +38,11 @@
             <Label layoutX="21.0" layoutY="76.0" text="Editing House:" />
             <Label layoutX="26.0" layoutY="202.0" text="Resource:" />
             <Label layoutX="26.0" layoutY="259.0" text="cover" />
-            <Button fx:id="resource" layoutX="107.0" layoutY="198.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="152.0" style="-fx-background-color: grey;" text="Choose file .." />
-            <Button fx:id="cover" layoutX="110.0" layoutY="254.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: grey;" text="Choose file .." />
+            <Button fx:id="resource" layoutX="107.0" layoutY="198.0" mnemonicParsing="false" onAction="#multiFileChooser" prefHeight="32.0" prefWidth="152.0" style="-fx-background-color: grey;" text="Choose file .." />
+            <Button fx:id="cover" layoutX="110.0" layoutY="264.0" mnemonicParsing="false" onAction="#coverChooser" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: grey;" text="Choose file .." />
             <CheckComboBox fx:id="category" layoutX="114.0" layoutY="121.0" prefHeight="28.0" prefWidth="139.0" />
+            <Label fx:id="resources_paths" layoutX="114.0" layoutY="235.0" />
+            <Label fx:id="cover_path" layoutX="123.0" layoutY="307.0" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="25.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
@@ -49,7 +51,6 @@
          </image></ImageView>
       <Button fx:id="btn_save" layoutX="163.0" layoutY="497.0" mnemonicParsing="false" onAction="#Save" prefHeight="32.0" prefWidth="119.0" styleClass="mainFxmlClass" stylesheets="@addbook.css" text="Save" />
       <Button fx:id="btn_cancel" cancelButton="true" defaultButton="true" layoutX="325.0" layoutY="497.0" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" prefWidth="119.0" style="-fx-background-color: grey;" stylesheets="@addbook.css" text="Cancel" />
-      <TabPane layoutX="362.0" layoutY="-14.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" />
    </children>
    <effect>
       <Glow />
