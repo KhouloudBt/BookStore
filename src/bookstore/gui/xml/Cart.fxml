@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="800" prefWidth="1280" stylesheets="@cart.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >   <children>
+      <ListView fx:id="bookµList" layoutX="38.0" layoutY="85.0" prefHeight="507.0" prefWidth="506.0" style="-fx-background-radius: 25px;" />
+      <Pane layoutX="596.0" layoutY="85.0" prefHeight="642.0" prefWidth="630.0" style="-fx-background-color: rgba(255,255,255,0.25); -fx-background-radius: 25px;">
+         <children>
+            <Button fx:id="nextBook" layoutX="561.0" layoutY="586.0" mnemonicParsing="false" style="-fx-background-color: #ff6347; -fx-background-radius: 25px;" text="→" textFill="WHITE">
+               <font>
+                  <Font name="Arial Narrow Bold" size="23.0" />
+               </font>
+            </Button>
+            <Button fx:id="lastBook" layoutX="14.0" layoutY="586.0" mnemonicParsing="false" style="-fx-background-color: #ff6347; -fx-background-radius: 25px;" text="←" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Narrow Bold" size="23.0" />
+               </font>
+            </Button>
+            <Pane fx:id="bookCover" layoutX="22.0" layoutY="120.0" prefHeight="433.0" prefWidth="351.0" style="-fx-background-color: white; -fx-background-radius: 25px;" />
+            <Label layoutX="270.0" layoutY="21.0" text="BOOK1" textFill="WHITE">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Label layoutX="396.0" layoutY="118.0" text="Name : test">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="395.0" layoutY="166.0" text="Writer : test">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="395.0" layoutY="217.0" text="Type : test">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="249.0" layoutY="590.0" text="Price : ---DTN" textFill="RED">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="395.0" layoutY="280.0" text="Date : test">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="396.0" layoutY="379.0" prefHeight="35.0" prefWidth="138.0" text="Discription : test">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="42.0" layoutY="83.0" prefHeight="35.0" prefWidth="82.0" text="Cover">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button fx:id="remove" layoutX="49.0" layoutY="670.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="138.0" style="-fx-background-color: #ff6347; -fx-background-radius: 15;" text="Remove" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button fx:id="buy" layoutX="371.0" layoutY="670.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" style="-fx-background-color: #ff6347; -fx-background-radius: 15px;" text="Buy Cart" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button fx:id="clearCart" layoutX="218.0" layoutY="670.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="130.0" style="-fx-background-color: #ff6347; -fx-background-radius: 15px;" text="Clear Cart" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button fx:id="search" layoutX="325.0" layoutY="619.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="174.0" style="-fx-background-color: #ff6347; -fx-background-radius: 15px;" text="Search" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <TextField layoutX="43.0" layoutY="619.0" prefHeight="38.0" prefWidth="267.0" style="-fx-background-radius: 25px;">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <Label alignment="CENTER" layoutX="473.0" layoutY="24.0" prefHeight="38.0" prefWidth="246.0" text="Cart" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Condensed Bold" size="51.0" />
+         </font>
+      </Label>
+   </children>
+   <styleClass>
+      <String fx:value="mainFxmlClass" />
+      <String fx:value="mainFxmlClass" />
+   </styleClass>
+</AnchorPane>
