@@ -22,7 +22,7 @@ public class BookStore {
      */
     public static void main(String[] args) {
         // TODO code application logic here        
-//        MyConnection cn = MyConnection.getInstance();
+        MyConnection cn = MyConnection.getInstance();
 //        Book bk = new Book(67889,"Khouloud","Rami",5.f,"hello");
 //        BookCRUD br= new BookCRUD();
 //        br.addBook(bk);
