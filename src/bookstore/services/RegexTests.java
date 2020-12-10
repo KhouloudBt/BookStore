@@ -30,8 +30,7 @@ public class RegexTests {
        public Boolean isValidPrice(String price)
     {
         return Pattern.matches("[0-9]+([,.][0-9]{1,2})?",price);
-    }
-    
+    }   
     
    
 }
