@@ -1,16 +1,12 @@
-/*
- * Empty Stylesheet file.
- */
 .mainFxmlClass {
 -fx-background-color:linear-gradient(from 25% 25% to 100% 100%, #9d14dc, #005eff);
 
 }
 .save_btn{
--fx-background-image: linear-gradient(to right top, #005eff, #4e53f9, #6f45f1, #8833e7, #9d14dc);
+-fx-background-color: linear-gradient(to right top, #005eff, #4e53f9, #6f45f1, #8833e7, #9d14dc);
 }
 .card{
     -fx-border-radius:25px;
     -fx-background-radius:25px;
+    -fx-background-color:whitesmoke;
 }
-
-
