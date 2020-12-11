@@ -154,8 +154,15 @@ public class AddBooksController implements Initializable {
             alert.showErrorAlert("Form Error!", "Invalid data");
             return;
         } else {
-            Boolean book_created = true;
-            try {
+                Boolean book_created = true;
+
+            if (book_crud.BookExits(isbn_txt.getText()))
+            {
+                alert.showErrorAlert("Error", "Book Already exists!");
+                book_created=false;
+                
+            }
+            else {try {
                 Book b = new Book(isbn_txt.getText(),
                          Float.parseFloat(price_txt.getText()),
                          title_txt.getText(),
@@ -169,6 +176,7 @@ public class AddBooksController implements Initializable {
                 alert.showErrorAlert("Error", "Error while creating Book"+ex.getMessage());
                 book_created = false;
 
+            }
             }
             if (book_created) {
                 alert.showConfirmationAlert("Book created ", "The book was created successfully!");
