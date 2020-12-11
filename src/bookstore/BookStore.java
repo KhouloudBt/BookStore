@@ -9,7 +9,7 @@ import bookstore.entities.Book;
 import bookstore.entities.Category;
 import bookstore.services.BookCRUD;
 import bookstore.services.CategoryCRUD;
-import bookstore.services.RegexTests;
+import bookstore.utilities.RegexTests;
 
 /**
  *

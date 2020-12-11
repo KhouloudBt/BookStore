@@ -8,7 +8,7 @@ package bookstore.gui.controllers;
 import bookstore.MyConnection;
 import bookstore.entities.Category;
 import bookstore.services.CategoryCRUD;
-import bookstore.services.RegexTests;
+import bookstore.utilities.RegexTests;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;

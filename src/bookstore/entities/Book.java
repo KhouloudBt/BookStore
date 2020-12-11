@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Book {
 
-    private int isbn;
+    private String isbn;
     private String title;
     private String Author;
     private float price = 0.0f;    
@@ -24,32 +24,29 @@ public class Book {
     private int nbRatings=0;
     private String EditingHouse;
     private User owner;
-    private BufferedImage cover;
+    private String cover;
     private List<Category> categories= new ArrayList<Category>();
-    private List<Resource> ResourcesList = new ArrayList<Resource>();
+    private List<Resource> resourcesList = new ArrayList<Resource>();
 
     public Book() {
     }
 
-    public Book(int isbn, String Author, List<Resource> ResourcesList) {
+    public Book(String isbn,float price, String title, String Author, String EditingHouse,List <Category> categories,List<Resource> resourcesList, String cover) {
         this.isbn = isbn;
-        this.Author = Author;
-        this.ResourcesList = ResourcesList;
-    }
-
-    public Book(int isbn, String title, String Author, float price, String EditingHouse) {
-        this.isbn = isbn;
+        this.price=price;
         this.title = title;
         this.Author = Author;
-        this.price = price;
         this.EditingHouse = EditingHouse;
+        this.cover = cover;
+        this.resourcesList=resourcesList;
+        this.categories=categories;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
@@ -75,22 +72,6 @@ public class Book {
 
     public void setPrice(float price) {
         this.price = price;
-    }
-
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
-    }
-
-    public List<Resource> getResourcesList() {
-        return ResourcesList;
-    }
-
-    public void setResourcesList(List<Resource> ResourcesList) {
-        this.ResourcesList = ResourcesList;
     }
 
     public int getNumberTimesBought() {
@@ -133,19 +114,36 @@ public class Book {
         this.owner = owner;
     }
 
-    public BufferedImage getCover() {
+    public String getCover() {
         return cover;
     }
 
-    public void setCover(BufferedImage cover) {
+    public void setCover(String cover) {
         this.cover = cover;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" + "isbn=" + isbn + ", title=" + title + ", Author=" + Author + ", price=" + price + ", categories=" + categories + ", ResourcesList=" + ResourcesList + ", numberTimesBought=" + numberTimesBought + ", averageRatings=" + averageRatings + ", nbRatings=" + nbRatings + ", EditingHouse=" + EditingHouse + ", owner=" + owner + '}';
+    public List<Category> getCategories() {
+        return categories;
     }
 
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    public List<Resource> getResourcesList() {
+        return resourcesList;
+    }
+
+    public void setResourcesList(List<Resource> resourcesList) {
+        this.resourcesList = resourcesList;
+    }
+
+  
+
+ 
+    
+
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

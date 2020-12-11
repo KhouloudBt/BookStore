@@ -17,17 +17,36 @@ public class Resource {
     private static final AtomicInteger count = new AtomicInteger(0);
 
     private int id;
-
-    private File file;
+    private String path;
 
     public Resource() {
         this.id = count.incrementAndGet();
 
     }
 
-    public Resource(int id, File file) {
+    public Resource(String path) {
         this.id = count.incrementAndGet();
-        this.file = file;
+        this.path = path;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+ 
+    
+    
 
 }

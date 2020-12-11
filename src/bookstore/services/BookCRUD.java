@@ -8,6 +8,7 @@ package bookstore.services;
 import bookstore.MyConnection;
 import bookstore.entities.Book;
 import bookstore.entities.Category;
+import bookstore.entities.Resource;
 import bookstore.entities.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -41,9 +42,16 @@ public class BookCRUD {
 
             for (Category cat: book.getCategories())
             {
-                String request2 = "INSERT INTO book_category() VALUES"
+                String request2 = "INSERT INTO book_category VALUES"
                     +"('"+book.getIsbn()+"'"
                     +",'"+cat.getId()+"')";
+                st.executeUpdate(request2);
+            }
+            for (Resource resource: book.getResourcesList())
+            {
+                String request2 = "INSERT INTO resource_book VALUES"
+                    +"('"+book.getIsbn()+"'"
+                    +",'"+resource.getId()+"')";
                 st.executeUpdate(request2);
             }
             System.out.println("Book added !");
@@ -58,7 +66,7 @@ public class BookCRUD {
             ResultSet rs = st.executeQuery(request);
             while(rs.next()){
             Book b = new Book();
-            b.setIsbn(rs.getInt(1));
+            b.setIsbn(rs.getString(1));
             b.setTitle(rs.getString(2));
             b.setAuthor(rs.getString(3));
             b.setPrice(rs.getFloat(4));
@@ -79,7 +87,7 @@ public class BookCRUD {
         try {
             String request = "DELETE FROM book where isbn =?";
             PreparedStatement pst = cnx.prepareStatement(request);
-            pst.setInt(1, b.getIsbn());
+            pst.setString(1, b.getIsbn());
            
             pst.executeUpdate();
             System.out.println("Book deleted!");
@@ -100,7 +108,7 @@ public class BookCRUD {
             System.out.println(ex.getMessage());        }
     }
         
-        public boolean BookExits(int isbn)
+        public boolean BookExits(String isbn)
         {
              List <Book> listBook = this.listBooks();
             return (listBook.stream().filter(c -> c.getIsbn()==isbn).count()!=0);
@@ -116,7 +124,7 @@ public class BookCRUD {
             ArrayList <Book> l = this.listBooks();
            return  l.stream().filter(p->p.getAuthor().equals(Author)).collect(Collectors.toList());
         }
-         public List<Book> SearchByISBN(int isbn)
+         public List<Book> SearchByISBN(String isbn)
         {
             ArrayList <Book> l = this.listBooks();
            return  l.stream().filter(p->p.getIsbn()==isbn).collect(Collectors.toList());
