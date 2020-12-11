@@ -12,20 +12,22 @@ import bookstore.utilities.CustomAlert;
  * @author khoul
  */
 public class UserSession {
-     private static UserSession instance;
-    CustomAlert alert=new CustomAlert();
+
+    private static UserSession instance;
+    CustomAlert alert = new CustomAlert();
     private String userName;
-    //private Set<String> privileges;
 
     private UserSession(String userName) {
         this.userName = userName;
-        
+
     }
- public static UserSession getInstance() {
-             return instance;
+
+    public static UserSession getInstance() {
+        return instance;
     }
+
     public static UserSession getInstance(String userName) {
-        if(instance == null) {
+        if (instance == null) {
             instance = new UserSession(userName);
         }
         return instance;
@@ -38,17 +40,15 @@ public class UserSession {
 //    public Set<String> getPrivileges() {
 //        return privileges;
 //    }
-
     public void cleanUserSession() {
         userName = "";// or null
-       
+
     }
 
     @Override
     public String toString() {
-        return "UserSession{" +
-                "userName='" + userName + '\'' +
-               
-                '}';
+        return "UserSession{"
+                + "userName='" + userName + '\''
+                + '}';
     }
 }
