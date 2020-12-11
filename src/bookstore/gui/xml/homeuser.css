@@ -1,0 +1,15 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+.border-panel-header{    
+-fx-background-color:linear-gradient(from 25% 25% to 100% 100%, #9d14dc, #005eff);
+-fx-border-color: #C8C8C8;
+-fx-border-width: 0 0 1 0;
+-fx-border-style: solid;
+
+}

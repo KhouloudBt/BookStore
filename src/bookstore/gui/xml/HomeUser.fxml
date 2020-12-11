@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+    <top>
+        <BorderPane  styleClass="border-panel-header" stylesheets="@homeuser.css"  >
+            <center>
+                <Label alignment="TOP_CENTER" maxWidth="Infinity" textFill="WHITE">
+                    <text>The avengers Book-store</text>
+                    <font>
+                        <Font name="Arial Bold Italic" size="21.0">
+                        </Font>
+                    </font>
+                    <padding>
+                        <Insets bottom="20" left="20" right="20" top="20" />
+                    </padding>            
+                </Label>
+            </center>
+            <left> 
+                <ImageView>
+                    <Image url="@img/books.PNG" />
+                </ImageView>
+            </left>
+        </BorderPane>
+          
+    </top>
+    <center>
+        <Label alignment="CENTER" maxWidth="Infinity" style="-fx-wrap-text: true">
+            <font>
+                <Font name="Arial" size="16">
+                </Font>
+            </font>
+            <padding>
+                <Insets bottom="20" left="80" right="80" top="20" />
+            </padding>
+        </Label>
+       
+    </center>
+    <bottom>
+        <Label alignment="BOTTOM_CENTER" maxWidth="Infinity" style="-fx-border-color: #C8C8C8;                -fx-border-width: 1 0 0 0;                -fx-border-style: solid">
+            <text>Copyright callicoder.com</text>
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+        </Label>
+    </bottom>
+</BorderPane>

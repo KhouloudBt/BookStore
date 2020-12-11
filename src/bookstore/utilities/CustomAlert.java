@@ -14,8 +14,7 @@ import javafx.scene.control.Alert;
 public class CustomAlert {
 
     public CustomAlert() {
-    }
-    
+    }   
     
     
     

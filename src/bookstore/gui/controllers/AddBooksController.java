@@ -23,6 +23,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -69,6 +70,8 @@ public class AddBooksController implements Initializable {
     ResourceCRUD resource_crud = new ResourceCRUD();
 
     private List<Category> categories;
+    @FXML
+    private Button cancel_btn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -178,13 +181,19 @@ public class AddBooksController implements Initializable {
             }
             }
             if (book_created) {
-                alert.showConfirmationAlert("Book created ", "The book was created successfully!");
+                alert.showInformationAlert("Book created ", "The book was created successfully!");
             }
         }
         categories = new ArrayList<>();
         for (Object cat_name : checked_categories_name) {
             categories.add(category_crud.SearchByName(cat_name.toString()));
         }
+
+    }
+
+    @FXML
+    private void closeAction(ActionEvent event) {
+                ((Node) (event.getSource())).getScene().getWindow().hide();
 
     }
 

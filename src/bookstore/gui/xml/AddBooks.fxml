@@ -87,7 +87,7 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
-      <Button defaultButton="true" layoutX="318.0" layoutY="471.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="113.0" text="Cancel" textFill="#6b6464">
+      <Button fx:id="cancel_btn" defaultButton="true" layoutX="318.0" layoutY="471.0" mnemonicParsing="false" onAction="#closeAction" prefHeight="38.0" prefWidth="113.0" text="Cancel" textFill="#6b6464">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
