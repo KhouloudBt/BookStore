@@ -14,8 +14,8 @@ import javafx.scene.control.Alert;
 public class CustomAlert {
 
     public CustomAlert() {
-    }   
-    
+    }  
+
     
     
     public void showErrorAlert(String title, String message) {
