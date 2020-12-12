@@ -1,0 +1,17 @@
+mainFxmlClass {
+  -fx-background-color:linear-gradient(from 25% 25% to 100% 100%, #9d14dc, #005eff);
+}
+
+.card {
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+    -fx-background-color:#f7f7f7;
+    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
+}
+.card1{
+    -fx-border-radius:8px;
+    -fx-background-radius:8px;
+    -fx-background-color:#f7f7f7;
+    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
+    -fx-margin:10px,5,5,5;
+}

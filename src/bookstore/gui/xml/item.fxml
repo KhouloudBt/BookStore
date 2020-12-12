@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="393.0" prefWidth="310.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="bookstore.gui.controllers.ItemController">
+   <children>
+      <VBox>
+         <children>
+            <VBox>
+               <children>
+                  <VBox prefHeight="157.0" prefWidth="310.0">
+                     <children>
+                        <ImageView fitHeight="199.0" fitWidth="309.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../../../../../../../Images/dafault.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <HBox VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="149.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Book title" textFill="#18349a">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="By: Book Author" textFill="#4a4646">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Book cathegory" textFill="#433d3d">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="26.0" prefWidth="102.0" text="50.99TND" textFill="#756c68" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Rating fx:id="avgRating" onDragDetected="#rate" onDragDone="#rate" onDragDropped="#rate" onDragEntered="#rate" onDragExited="#rate" onDragOver="#rate" onMouseDragEntered="#rate" onMouseDragExited="#tare" onMouseDragOver="#rate" onMouseDragReleased="#rate" rating="0.0" updateOnHover="true">
+                           <effect>
+                              <DropShadow color="#dd43db" />
+                           </effect>
+                        </Rating>
+                        <JFXButton fx:id="btn_rate" buttonType="RAISED" onAction="#Rate" prefHeight="39.0" prefWidth="100.0" ripplerFill="#112594" text="Rate" wrapText="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets right="20.0" />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+                  <Label text="(123700)">
+                     <HBox.margin>
+                        <Insets left="15.0" right="25.0" top="105.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

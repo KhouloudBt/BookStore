@@ -5,7 +5,6 @@
  */
 package bookstore.entities;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -138,12 +137,6 @@ public class Book {
         this.resourcesList = resourcesList;
     }
 
-  
-
- 
-    
-
-    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
