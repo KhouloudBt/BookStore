@@ -8,7 +8,6 @@ package bookstore.services;
 import bookstore.MyConnection;
 import bookstore.entities.Book;
 import bookstore.entities.Cart;
-import bookstore.temp.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +15,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -89,6 +89,32 @@ public class CartCRUD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    public ArrayList<Book> cartBooks() {  
+        ArrayList<Book> lb= new ArrayList<Book>();
+           try {
+               String req = "Select * from book where isbn in "
+                       + "(select id_book from cart_book where id_cart=1)";
+               PreparedStatement pst = cnx.prepareStatement(req);
+             ResultSet rs = pst.executeQuery();
+        while(rs.next()){
+            System.out.println(rs.getInt(1));
+            Book b = new Book();
+            b.setIsbn(rs.getInt(1));
+            b.setTitle(rs.getString(2));
+            b.setAuthor(rs.getString(3));
+            b.setPrice(rs.getFloat(4));
+            b.setNumberTimesBought(rs.getInt(5));
+            b.setAverageRatings(rs.getFloat(6));
+            b.setNbRatings(rs.getInt(7));
+            b.setEditingHouse(rs.getString(8));   
+            lb.add(b);
+            }
+           } catch (SQLException ex) {
+               Logger.getLogger(CartCRUD.class.getName()).log(Level.SEVERE, null, ex);
+           }    
+           return lb;
     }
     
        

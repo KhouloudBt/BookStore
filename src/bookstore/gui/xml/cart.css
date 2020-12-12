@@ -5,3 +5,5 @@
 .mainFxmlClass {
 -fx-background-color:linear-gradient(from 25% 25% to 100% 100%, #9d14dc, #005eff);
 }
+ListView{font-family: "Courier New", Courier, monospace;
+}
