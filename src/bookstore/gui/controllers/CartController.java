@@ -10,6 +10,9 @@ import bookstore.services.CartCRUD;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -150,7 +153,10 @@ public class CartController implements Initializable {
           name.setText("title : "+b.getTitle());
           title.setText("title : "+b.getTitle());
          writer.setText("Writer : "+b.getAuthor());
-          type.setText("Categories : "+b.getCategories());
+        ObservableList<String> listCat= b.getCategories().stream()
+                .map(c -> c.getName())
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
+          type.setText("Categories : "+listCat);
             disc.setText("Description : \n"+b.getTitle()+" "+b.getAuthor()+"\n\t"+b.getPrice()+"DTN");
              rating.setText("Rating : "+b.getAverageRatings());
              usr.setText("Containt Creator : "+b.getOwner());

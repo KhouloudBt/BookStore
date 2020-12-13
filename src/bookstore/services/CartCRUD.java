@@ -8,6 +8,8 @@ package bookstore.services;
 import bookstore.MyConnection;
 import bookstore.entities.Book;
 import bookstore.entities.Cart;
+import bookstore.entities.Category;
+import bookstore.entities.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -101,16 +103,28 @@ public class CartCRUD {
         while(rs.next()){
             System.out.println(rs.getInt(1));
             Book b = new Book();
-            b.setIsbn(rs.getInt(1));
+            b.setIsbn(rs.getString(1));
             b.setTitle(rs.getString(2));
             b.setAuthor(rs.getString(3));
             b.setPrice(rs.getFloat(4));
             b.setNumberTimesBought(rs.getInt(5));
             b.setAverageRatings(rs.getFloat(6));
             b.setNbRatings(rs.getInt(7));
-            b.setEditingHouse(rs.getString(8));   
+            b.setEditingHouse(rs.getString(8));  
+            //b.setOwner((User) rs.getObject(9));
+                                                    CategoryCRUD cr = new CategoryCRUD();
+                                                    ArrayList<Category> listCat =new ArrayList<Category>();
+                                                     String req1 = "Select id_category from book_category where id_book ="+rs.getString(1);
+                                                        PreparedStatement pst1 = cnx.prepareStatement(req1);
+                                                        ResultSet res = pst1.executeQuery();
+                                                              while(res.next()){
+                                                    for (Category cat : cr.listCategories())
+                                                        if( cat.getId() == res.getInt(1) )
+                                                        listCat.add(cat); }
+            b.setCategories(listCat);
+                                                             
             lb.add(b);
-            }
+        }
            } catch (SQLException ex) {
                Logger.getLogger(CartCRUD.class.getName()).log(Level.SEVERE, null, ex);
            }    

@@ -21,10 +21,7 @@ public class FirstWindow extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-
-            Parent root = FXMLLoader.load(getClass().getResource("Cart.fxml"));//la 1er fenetre à afficher
-
-            
+            Parent root = FXMLLoader.load(getClass().getResource("Cart.fxml"));//la 1er fenetre à affiche
             Scene scene = new Scene(root,1200,786);
             
             primaryStage.setTitle("Our book store");
