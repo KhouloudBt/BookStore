@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane id="AnchorPane" fx:id="containtCreator" prefHeight="800" prefWidth="1200.0" stylesheets="@cart.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.CartController">   <children>
       <ListView fx:id="bookList" fixedCellSize="-4.0" layoutX="37.0" layoutY="97.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#myBooks" prefHeight="499.0" prefWidth="466.0" style="-fx-background-radius: 25px; font-family: monospace; -fx-border-radius: 25px; -fx-padding: 10px; font size: 24px;" />  
 
