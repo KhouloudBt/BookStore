@@ -155,6 +155,7 @@ public class CartController implements Initializable {
              rating.setText("Rating : "+b.getAverageRatings());
              usr.setText("Containt Creator : "+b.getOwner());
              price.setText("-- Price : "+b.getPrice()+" DTN--");
+         
     }
 
     @FXML

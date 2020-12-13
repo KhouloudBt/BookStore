@@ -143,8 +143,8 @@ public class Book {
 
     @Override
     public String toString() {
-        return String.format("isbn : %10s",isbn) + String.format("| title : %s\t",title) + String.format("| Author : %s\t",Author)  +String.format("| price : %s\t",price)
-                + String.format("| average Ratings : %s\t",averageRatings)+String.format("| Editing House : %s\t |",EditingHouse);
+        return String.format("|%s\t",title) + String.format("| Author : %s\t",Author)  +String.format("| price : %sDNT\t",price)
+                + String.format("| Ratings : %s\t",averageRatings);
     }
 
     @Override

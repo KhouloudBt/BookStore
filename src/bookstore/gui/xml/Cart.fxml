@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="containtCreator" prefHeight="800" prefWidth="1200.0" stylesheets="@cart.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.CartController">   <children>
-      <ListView fx:id="bookList" layoutX="37.0" layoutY="97.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#myBooks" prefHeight="499.0" prefWidth="466.0" style="-fx-background-radius: 25px; font-family: monospace; -fx-border-radius: 25px; -fx-padding: 10px; font size: 24px;" />  
+      <ListView fx:id="bookList" fixedCellSize="-4.0" layoutX="37.0" layoutY="97.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#myBooks" prefHeight="499.0" prefWidth="466.0" style="-fx-background-radius: 25px; font-family: monospace; -fx-border-radius: 25px; -fx-padding: 10px; font size: 24px;" />  
 
       <Pane layoutX="538.0" layoutY="99.0" prefHeight="622.0" prefWidth="638.0" style="-fx-background-color: rgba(255,255,255,0.25); -fx-background-radius: 25px;">
          <children>
@@ -30,19 +30,19 @@
                   <Font size="32.0" />
                </font>
             </Label>
-            <Label fx:id="name" layoutX="386.0" layoutY="136.0" prefHeight="35.0" prefWidth="121.0" text="Name : ">
+            <Label fx:id="name" layoutX="350.0" layoutY="136.0" prefHeight="35.0" prefWidth="121.0" text="Name : ">
                <font>
-                  <Font size="24.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="writer" layoutX="385.0" layoutY="186.0" prefHeight="35.0" prefWidth="138.0" text="Writer :">
+            <Label fx:id="writer" layoutX="349.0" layoutY="186.0" prefHeight="35.0" prefWidth="138.0" text="Writer :">
                <font>
-                  <Font size="24.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="type" layoutX="386.0" layoutY="234.0" text="Categories:">
+            <Label fx:id="type" layoutX="350.0" layoutY="234.0" text="Categories:">
                <font>
-                  <Font size="24.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
             <Label fx:id="price" layoutX="249.0" layoutY="590.0" text="Price : ---DTN" textFill="RED">
@@ -52,22 +52,22 @@
             </Label>
             <Label fx:id="rating" layoutX="291.0" layoutY="77.0" text="Rating : ">
                <font>
-                  <Font size="24.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="disc" layoutX="382.0" layoutY="383.0" prefHeight="169.0" prefWidth="278.0" text="Discription :">
+            <Label fx:id="disc" layoutX="345.0" layoutY="380.0" prefHeight="169.0" prefWidth="278.0" text="Discription :">
                <font>
-                  <Font size="24.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="usr" layoutX="385.0" layoutY="286.0" text="Containt Creator :">
+            <Label fx:id="usr" layoutX="349.0" layoutY="286.0" text="Containt Creator :">
                <font>
-                  <Font size="24.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="house" layoutX="386.0" layoutY="337.0" prefHeight="43.0" prefWidth="195.0" text="Edition House : ">
+            <Label fx:id="house" layoutX="350.0" layoutY="337.0" prefHeight="43.0" prefWidth="195.0" text="Edition House : ">
                <font>
-                  <Font size="24.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
          </children>
