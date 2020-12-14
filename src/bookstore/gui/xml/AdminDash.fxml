@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bookstore.views.AdminDashController">
+   <left>
+      <AnchorPane prefHeight="702.0" prefWidth="208.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="702.0" prefWidth="220.0" spacing="10.0" styleClass="left" stylesheets="@admindash.css">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="163.0" text="Welcome Back " textAlignment="CENTER" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets left="25.0" top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <StackPane fx:id="r" prefHeight="37.0" prefWidth="220.0" />
+                  <JFXButton fx:id="btHome" defaultButton="true" onMouseClicked="#showHome" prefHeight="80.0" prefWidth="180.0" ripplerFill="#7b05eb" text="Home">
+                     <VBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/icons8-home-26.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btMember" onMouseClicked="#showUsers" prefHeight="80.0" prefWidth="180.0" text="Members">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/icons8-conference-52.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton fx:id="btBooks" onMouseClicked="#showBooks" prefHeight="80.0" prefWidth="180.0" text="Books">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/icons8-books-64.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton fx:id="btCategories" onMouseClicked="#showCategories" prefHeight="80.0" prefWidth="180.0" text="Categories">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/icons8-category-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton fx:id="btOffers" onMouseClicked="#showOffers" prefHeight="80.0" prefWidth="180.0" text="Offers">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/icons8-add-bookmark-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton prefHeight="80.0" prefWidth="180.0" text="Annoncement">
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin></JFXButton>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="top" prefHeight="79.0" prefWidth="980.0" styleClass="top" stylesheets="@admindash.css">
+               <children>
+                  <JFXButton prefHeight="79.0" prefWidth="145.0" style="-fx-background-color: #e0e0e0;" text="HomePage">
+                     <HBox.margin>
+                        <Insets left="600.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/icons8-back-64.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton prefHeight="101.0" prefWidth="118.0" style="-fx-background-color: #e0e0e0;" text="Notification">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/icons8-bell-48.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton prefHeight="101.0" prefWidth="118.0" style="-fx-background-color: #e0e0e0;" text="LogOut">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/icons8-export-48.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+               </children>
+            </HBox>
+            <BorderPane fx:id="borderPane" prefHeight="603.0" prefWidth="980.0">
+               <top>
+                  <HBox prefHeight="78.0" prefWidth="980.0" spacing="20.0" BorderPane.alignment="CENTER" />
+               </top>
+            </BorderPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

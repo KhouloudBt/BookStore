@@ -14,6 +14,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -73,5 +76,10 @@ public class UserCRUD {
             System.out.println("user has been deleted!");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());        }
+    }
+    
+     public ObservableList<User> ObListUsers() {
+        return this.readUsers().stream()
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 }

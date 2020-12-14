@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="961.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bookstore.views.UserManagementController">
+<center>
+                  <TableView fx:id="tableview" prefHeight="525.0" prefWidth="961.0" stylesheets="@admindash.css" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+                    <columns>
+                      <TableColumn fx:id="cuserId" prefWidth="88.0" style="-fx-border-radius: 25 0 0 0; -fx-background-radius: 25 0 0 0;" text="user ID" />
+                      <TableColumn fx:id="cusername" minWidth="8.333343505859375" prefWidth="111.0" text="username" />
+                        <TableColumn fx:id="cuserfirstname" prefWidth="110.0" text="firstname" />
+                        <TableColumn fx:id="cuserlastname" prefWidth="122.0" text="lastname" />
+                        <TableColumn fx:id="cuserephone" prefWidth="132.0" text="phone" />
+                        <TableColumn fx:id="cuseremail" prefWidth="157.0" text="email" />
+                    </columns>
+                     <BorderPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </BorderPane.margin>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+                  </TableView>
+               </center>
+</BorderPane>

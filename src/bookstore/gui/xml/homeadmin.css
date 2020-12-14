@@ -1,0 +1,27 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.pane1{
+    
+     -fx-background-color: linear-gradient(#f7da00 10%, #fff9cc 90%);
+     -fx-border-radius:8px;
+    -fx-background-radius:8px;
+
+}
+.pane2{
+     
+     -fx-background-color: linear-gradient(#51c700 10%, #d8ffbd 90%);
+      -fx-border-radius:8px;
+    -fx-background-radius:8px;
+}
+.pane3{
+      -fx-background-color: linear-gradient(#008fc7 10%, #bcdce8 90%);
+      -fx-border-radius:8px;
+    -fx-background-radius:8px;
+}
+.pane4{
+      -fx-background-color: linear-gradient(#7c00ad 10%, #eecffa 90%);
+      -fx-border-radius:8px;
+    -fx-background-radius:8px;
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="961.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox prefHeight="101.0" prefWidth="961.0" spacing="30.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pane1" stylesheets="@homeadmin.css">
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pane2" stylesheets="@homeadmin.css" />
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pane3" stylesheets="@homeadmin.css" />
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pane4" stylesheets="@homeadmin.css" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </HBox>
+   </top>
+</BorderPane>
