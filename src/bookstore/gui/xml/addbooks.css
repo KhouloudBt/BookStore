@@ -4,9 +4,16 @@
 }
 .save_btn{
 -fx-background-color: linear-gradient(to right top, #005eff, #4e53f9, #6f45f1, #8833e7, #9d14dc);
+-fx-border-radius:25px;
+-fx-background-radius:25px;
 }
 .card{
-    -fx-border-radius:25px;
-    -fx-background-radius:25px;
+    -fx-border-radius:10px;
+    -fx-background-radius:10px;
     -fx-background-color:whitesmoke;
+}
+.cancel_btn{
+    -fx-background-color: gray;
+-fx-border-radius:25px;
+-fx-background-radius:25px;
 }

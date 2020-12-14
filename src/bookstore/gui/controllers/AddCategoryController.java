@@ -8,15 +8,15 @@ package bookstore.gui.controllers;
 import bookstore.MyConnection;
 import bookstore.entities.Category;
 import bookstore.services.CategoryCRUD;
+import bookstore.utilities.CustomAlert;
 import bookstore.utilities.RegexTests;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -27,11 +27,15 @@ import javafx.scene.control.TextField;
  */
 public class AddCategoryController implements Initializable {
 
+    @FXML
     private TextField Name;
+    @FXML
     private TextArea description;
-
-   
-    
+    @FXML
+    private Button btn_save;
+    @FXML
+    private Button btn_cancel;
+    CustomAlert alert = new CustomAlert();
 
     /**
      * Initializes the controller class.
@@ -39,7 +43,7 @@ public class AddCategoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void Save(ActionEvent event) {
@@ -47,22 +51,35 @@ public class AddCategoryController implements Initializable {
         RegexTests rgx = new RegexTests();
 
         if (!rgx.isAvalidCategory(Name.getText())) {
-            System.out.println("Invalid Name!");
-
+            alert.showErrorAlert("Inpur error", "Ivalid category");
         } else if (cr.CategoryExists(Name.getText())) {
-            System.out.println("Category already exists !");
+            alert.showErrorAlert("Input Error", "Category already exists");
         } else {
-            MyConnection cnx = MyConnection.getInstance();
-            Category cat = new Category(Name.getText(), description.getText().trim());
-            cr.addCategory(cat);
+            try {
+                MyConnection cnx = MyConnection.getInstance();
+                Category cat = new Category(Name.getText(), description.getText().trim());
+                cr.addCategory(cat);
+                alert.showInformationAlert("Succes", "Category added succefully!");
+                 this.clear();
+
+            } catch (Exception ex) {
+                alert.showErrorAlert("Error", "Error while adding category: " + ex.getMessage());
+
+            }
         }
 
     }
 
     @FXML
     private void cancel(ActionEvent event) {
-        Name.setText("");
-        description.setText("");
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+
     }
-    
+    private void clear()
+    {
+        Name.clear();
+        description.clear();
+    }
+
+
 }

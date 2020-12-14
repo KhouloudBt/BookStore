@@ -13,15 +13,15 @@ public class RegexTests {
     
     public boolean isAvalidCategory (String str)
     {
-        return Pattern.matches("[[A-z]+[-_][A-z]+]+",str);
+        return Pattern.matches("[[A-z]+[\\u0020-_&]]+",str);
     }
     public boolean containsOnlyLettersAndSpaces(String str)
     {
-      return Pattern.matches("[[A-z]\\u0020]+",str);
+      return Pattern.matches("[[A-Z-a-z]+\\u0020]+",str);
     }
     public boolean IsvalidIsbn( String isbn)
     {
-        return (isbn.length()==0 || Pattern.matches("[0-9]+",isbn));
+        return (isbn.length()==0 || Pattern.matches("[0-9(-)$]+",isbn));
     }
     public Boolean isValidMail(String mail)
     {

@@ -9,7 +9,6 @@ import bookstore.MyConnection;
 import bookstore.entities.Book;
 import bookstore.entities.Category;
 import bookstore.entities.Resource;
-import bookstore.entities.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -66,16 +65,31 @@ public class BookCRUD {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(request);
             while (rs.next()) {
-                Book b = new Book();
+                Book b = new Book(); 
+                System.out.println("HI");
                 b.setIsbn(rs.getString(1));
+                System.out.println(b.getIsbn());
+
                 b.setTitle(rs.getString(2));
+
                 b.setAuthor(rs.getString(3));
+
                 b.setPrice(rs.getFloat(4));
+
                 b.setNumberTimesBought(rs.getInt(5));
+
                 b.setAverageRatings(rs.getFloat(6));
+
                 b.setNbRatings(rs.getInt(7));
                 b.setEditingHouse(rs.getString(8));
-                b.setOwner((User) rs.getObject(9));
+                b.setCover(rs.getString(10));
+                b.setDesciption(rs.getString(11));
+//                User owner= user_crud.searchById(rs.getInt(9));
+//                                System.out.println("owner");                
+//
+//                b.setOwner(owner) ; 
+                System.out.println(b);
+
                 myList.add(b);
             }
         } catch (SQLException ex) {
