@@ -19,11 +19,20 @@ public class Book {
     private String Author;
     private float price = 0.0f;    
     private int numberTimesBought=0;
-    private float averageRatings=0.0f;
+    private double averageRatings=0.0f;
     private int nbRatings=0;
     private String EditingHouse;
     private User owner;
     private String cover;
+    private String desciption;
+
+    public String getDesciption() {
+        return desciption;
+    }
+
+    public void setDesciption(String desciption) {
+        this.desciption = desciption;
+    }
     private List<Category> categories= new ArrayList<Category>();
     private List<Resource> resourcesList = new ArrayList<Resource>();
 
@@ -81,11 +90,11 @@ public class Book {
         this.numberTimesBought = numberTimesBought;
     }
 
-    public float getAverageRatings() {
+    public double getAverageRatings() {
         return averageRatings;
     }
 
-    public void setAverageRatings(float averageRatings) {
+    public void setAverageRatings(double averageRatings) {
         this.averageRatings = averageRatings;
     }
 

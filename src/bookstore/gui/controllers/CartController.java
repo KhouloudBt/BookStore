@@ -8,6 +8,10 @@ package bookstore.gui.controllers;
 import bookstore.entities.Book;
 import bookstore.entities.Cart;
 import bookstore.services.CartCRUD;
+import bookstore.utilities.CustomAlert;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -21,6 +25,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -194,8 +199,17 @@ public class CartController implements Initializable {
              usr.setText("Containt Creator : "+b.getOwner());
              house.setText("Editing House : "+b.getEditingHouse());
              price.setText("-- Price : "+b.getPrice()+" DTN --");
-             
-             //bookCover.path
+             System.out.println(b.getCover());
+
+        try {
+            File file = new File(b.getCover().trim());
+            InputStream stream = new FileInputStream(file);
+            Image image = new Image(stream);
+            bookCover.setImage(image);
+        } catch (Exception ex) {
+            CustomAlert.showErrorAlert("Error image", "error while reading image" + ex.getMessage());
+        }
+
         
     }
 

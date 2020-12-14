@@ -127,7 +127,6 @@ public class CartCRUD {
                PreparedStatement pst = cnx.prepareStatement(req);
              ResultSet rs = pst.executeQuery();
         while(rs.next()){
-            System.out.println(rs.getInt(1));
             Book b = new Book();
             b.setIsbn(rs.getString(1));
             b.setTitle(rs.getString(2));
@@ -137,7 +136,7 @@ public class CartCRUD {
             b.setAverageRatings(rs.getFloat(6));
             b.setNbRatings(rs.getInt(7));
             b.setEditingHouse(rs.getString(8));  
-            //b.setCover(rs.getString(10));
+            b.setCover(rs.getString(10));
                 CategoryCRUD cr = new CategoryCRUD();
                 ArrayList<Category> listCat =new ArrayList<Category>();
                 String req1 = "Select id_category from book_category where id_book ="+rs.getString(1);

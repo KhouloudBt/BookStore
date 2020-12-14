@@ -9,7 +9,6 @@
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -116,10 +115,7 @@
                   <Font name="Forte" size="16.0" />
                </font>
             </Label>
-            <ImageView fx:id="bookCover" fitHeight="374.0" fitWidth="303.0" layoutX="6.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@img/book.jpg" />
-               </image></ImageView>
+            <ImageView fx:id="bookCover" fitHeight="374.0" fitWidth="303.0" layoutX="6.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
       <Button fx:id="remove" layoutX="48.0" layoutY="674.0" mnemonicParsing="false" onAction="#btnr" prefHeight="38.0" prefWidth="138.0" style="-fx-background-radius: 15;" text="Remove" textFill="WHITE">

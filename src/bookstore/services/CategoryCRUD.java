@@ -6,7 +6,6 @@
 package bookstore.services;
 
 import bookstore.MyConnection;
-import bookstore.entities.Book;
 import bookstore.entities.Category;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -95,6 +94,23 @@ public class CategoryCRUD {
         return this.listCategories().stream()
                 .map(c -> c.getName())
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
+    }
+
+    public ArrayList<String> ListByBook(int isbn) {
+        ArrayList<String> categories_names = new ArrayList<String>();
+        try {
+            String request = "select c.name from book_category bc, category c where bc.id_book=" + isbn + " and bc.id_category = c.id";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(request);
+            while (rs.next()) {
+                categories_names.add(rs.getString(1));
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return categories_names;
     }
 
     public boolean CategoryExists(String Name) {
