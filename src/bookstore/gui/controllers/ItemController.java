@@ -1,6 +1,8 @@
 package bookstore.gui.controllers;
 
 import bookstore.entities.Book;
+import bookstore.services.CategoryCRUD;
+import bookstore.utilities.CustomAlert;
 import bookstore.utilities.MyListener;
 import com.jfoenix.controls.JFXButton;
 import java.io.File;
@@ -12,8 +14,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import org.controlsfx.control.Rating;
 
@@ -38,6 +38,9 @@ public class ItemController {
     private Label nbRating;
     @FXML
     private ImageView img;
+    
+    CategoryCRUD cr = new CategoryCRUD();
+    
 
     private void click(MouseEvent mouseEvent) {
         myListener.onClickListener(book);
@@ -53,29 +56,31 @@ public class ItemController {
         System.out.println("here1 ");
         System.out.println(book.getCover());
 
-//        try {
-//            Image image = new Image(getClass().getResourceAsStream(book.getCover()));
-//            img.setImage(image);
-//        } catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//        }
-        File file = new File(book.getCover().trim());
-        InputStream stream = new FileInputStream(file);
-        Image image = new Image(stream);
-        img.setImage(image);
-//  String urll=rs.getString("image");
-//               File file = new File(urll);
-//              
-//            InputStream stream = new FileInputStream(file);
-//            Image image = new Image(stream);
-//            imageView.setImage(image);
-        System.out.println("here3 ");
+        try {
+            File file = new File(book.getCover().trim());
+            InputStream stream = new FileInputStream(file);
+            Image image = new Image(stream);
+            img.setImage(image);
+        } catch (Exception ex) {
+            CustomAlert.showErrorAlert("Error image", "error while reading image" + ex.getMessage());
+        }
 
         avgRating.setRating(book.getAverageRatings());
         nbRating.setText(book.getNbRatings() + "");
+        author.setText(book.getAuthor());
+        String categories="";
+        
+//        for (int i =0; i<(cr.ListByBook(book.getIsbn(); i++)
+//        {
+//            categories=categories+book.getCategories().
+//        }
+//        {
+//            
+//        }
+//        bcategory.setText(book.getCategories());
+        
 
         title.setText(book.getTitle());
-        System.out.println("here 2");
 
     }
 
@@ -84,43 +89,10 @@ public class ItemController {
         int nb_ratings = this.book.getNbRatings();
         double new_rating = avgRating.getRating();
         double avg_rating = this.book.getAverageRatings();
-        System.out.println(avg_rating);
+        System.out.println("average rating"+avg_rating);
         this.book.setNbRatings(nb_ratings + 1);
-        this.book.setAverageRatings((double) (avg_rating + new_rating) / nb_ratings);
-        System.out.println(this.book.getAverageRatings());
-    }
-
-    @FXML
-    private void Rate(MouseDragEvent event) {
-        int nb_ratings = this.book.getNbRatings();
-        double new_rating = avgRating.getRating();
-        double avg_rating = this.book.getAverageRatings();
-        System.out.println(avg_rating);
-        this.book.setNbRatings(nb_ratings + 1);
-        this.book.setAverageRatings((double) (avg_rating + new_rating) / nb_ratings);
-        System.out.println(this.book.getAverageRatings());
-    }
-
-    @FXML
-    private void Rate(DragEvent event) {
-        int nb_ratings = this.book.getNbRatings();
-        double new_rating = avgRating.getRating();
-        double avg_rating = this.book.getAverageRatings();
-        System.out.println(avg_rating);
-        this.book.setNbRatings(nb_ratings + 1);
-        this.book.setAverageRatings((double) (avg_rating + new_rating) / nb_ratings);
-        System.out.println(this.book.getAverageRatings());
-    }
-
-    @FXML
-    private void Rate(MouseEvent event) {
-        int nb_ratings = this.book.getNbRatings();
-        double new_rating = avgRating.getRating();
-        double avg_rating = this.book.getAverageRatings();
-        System.out.println(avg_rating);
-        this.book.setNbRatings(nb_ratings + 1);
-        this.book.setAverageRatings((double) (avg_rating + new_rating) / nb_ratings);
-        System.out.println(this.book.getAverageRatings());
+        this.book.setAverageRatings((double) (avg_rating + new_rating) / book.getNbRatings());
+        nbRating.setText(book.getNbRatings()+"");
     }
 
 }

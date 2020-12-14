@@ -18,28 +18,28 @@ public class CustomAlert {
 
     
     
-    public void showErrorAlert(String title, String message) {
+    public  static void showErrorAlert(String title, String message) {
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.show();
     }
-        public void showConfirmationAlert(String title, String message) {
+        public static void showConfirmationAlert(String title, String message) {
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.show();
     }
-        public void showInformationAlert(String title, String message) {
+        public static void showInformationAlert(String title, String message) {
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.show();
     }
-        public void showWarningAlert(String title, String message) {
+        public static void showWarningAlert(String title, String message) {
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(Alert.AlertType.WARNING);
         alert.setTitle(title);
         alert.setHeaderText(null);

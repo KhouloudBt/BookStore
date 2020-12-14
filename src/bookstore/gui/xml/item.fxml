@@ -49,14 +49,6 @@
                               <Insets left="5.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="bcategory" text="Book cathegory" textFill="#433d3d" wrapText="true">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="5.0" />
-                           </VBox.margin>
-                        </Label>
                         <Label fx:id="price" prefHeight="26.0" prefWidth="102.0" text="50.99TND" textFill="#756c68" wrapText="true" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets left="10.0" />

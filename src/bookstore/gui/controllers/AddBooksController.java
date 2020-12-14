@@ -63,7 +63,6 @@ public class AddBooksController implements Initializable {
     List<Resource> resources_list;
     String cover_path_txt;
     RegexTests rgx = new RegexTests();
-    CustomAlert alert = new CustomAlert();
     CategoryCRUD category_crud = new CategoryCRUD();
     BookCRUD book_crud = new BookCRUD();
     ResourceCRUD resource_crud = new ResourceCRUD();
@@ -80,7 +79,7 @@ public class AddBooksController implements Initializable {
         checked_categories = new ArrayList<Category>();
         ObservableList<String> obs = category_crud.ListNames();
         if(obs.isEmpty()){
-            alert.showWarningAlert("Warning", "You have no categories added !");
+            CustomAlert.showWarningAlert("Warning", "You have no categories added !");
         }
         else{
         category_ch.getItems().addAll(obs);}
@@ -111,7 +110,7 @@ public class AddBooksController implements Initializable {
              resources_list.add(resource);
             } catch (Exception ex)
             {
-                alert.showErrorAlert("Error", "Error while creating resource"+ex.getMessage());
+                CustomAlert.showErrorAlert("Error", "Error while creating resource"+ex.getMessage());
             }            
             
         }
@@ -128,7 +127,7 @@ public class AddBooksController implements Initializable {
             cover_path_txt = f.getAbsolutePath();
             }catch (Exception ex)
             {
-                alert.showErrorAlert("Error", "Error while adding image:"+ex.getMessage());
+                CustomAlert.showErrorAlert("Error", "Error while adding image:"+ex.getMessage());
             }
         }
     }
@@ -147,19 +146,19 @@ public class AddBooksController implements Initializable {
                 || checked_categories_name.isEmpty()
                 || resources_list.isEmpty()
                 || cover_path_txt.equals("") == true) {
-            alert.showErrorAlert("Form Error!", "Please fill all the fields");
+            CustomAlert.showErrorAlert("Form Error!", "Please fill all the fields");
         } else if (!(rgx.IsvalidIsbn(isbn_txt.getText())
                 && rgx.isValidPrice(price_txt.getText())
                 && rgx.containsOnlyLettersAndSpaces(editingHouse_txt.getText())
                 && rgx.containsOnlyLettersAndSpaces(author_txt.getText()))) {
-            alert.showErrorAlert("Form Error!", "Invalid data");
+            CustomAlert.showErrorAlert("Form Error!", "Invalid data");
             return;
         } else {
                 Boolean book_created = true;
 
             if (book_crud.BookExits(isbn_txt.getText()))
             {
-                alert.showErrorAlert("Error", "Book Already exists!");
+                CustomAlert.showErrorAlert("Error", "Book Already exists!");
                 book_created=false;
                 
             }
@@ -174,13 +173,13 @@ public class AddBooksController implements Initializable {
                          cover_path_txt);
                 book_crud.addBook(b);
             } catch (Exception ex) {
-                alert.showErrorAlert("Error", "Error while creating Book"+ex.getMessage());
+                CustomAlert.showErrorAlert("Error", "Error while creating Book"+ex.getMessage());
                 book_created = false;
 
             }
             }
             if (book_created) {
-                alert.showInformationAlert("Book created ", "The book was created successfully!");
+                CustomAlert.showInformationAlert("Book created ", "The book was created successfully!");
             }
         }
         categories = new ArrayList<>();
@@ -189,7 +188,6 @@ public class AddBooksController implements Initializable {
         }
 
     }
-
     @FXML
     private void closeAction(ActionEvent event) {
                 ((Node) (event.getSource())).getScene().getWindow().hide();

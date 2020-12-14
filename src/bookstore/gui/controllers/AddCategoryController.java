@@ -35,7 +35,6 @@ public class AddCategoryController implements Initializable {
     private Button btn_save;
     @FXML
     private Button btn_cancel;
-    CustomAlert alert = new CustomAlert();
 
     /**
      * Initializes the controller class.
@@ -51,19 +50,19 @@ public class AddCategoryController implements Initializable {
         RegexTests rgx = new RegexTests();
 
         if (!rgx.isAvalidCategory(Name.getText())) {
-            alert.showErrorAlert("Inpur error", "Ivalid category");
+            CustomAlert.showErrorAlert("Inpur error", "Ivalid category");
         } else if (cr.CategoryExists(Name.getText())) {
-            alert.showErrorAlert("Input Error", "Category already exists");
+            CustomAlert.showErrorAlert("Input Error", "Category already exists");
         } else {
             try {
                 MyConnection cnx = MyConnection.getInstance();
                 Category cat = new Category(Name.getText(), description.getText().trim());
                 cr.addCategory(cat);
-                alert.showInformationAlert("Succes", "Category added succefully!");
+                CustomAlert.showInformationAlert("Succes", "Category added succefully!");
                  this.clear();
 
             } catch (Exception ex) {
-                alert.showErrorAlert("Error", "Error while adding category: " + ex.getMessage());
+                CustomAlert.showErrorAlert("Error", "Error while adding category: " + ex.getMessage());
 
             }
         }
