@@ -28,7 +28,7 @@ public class CartCRUD {
        Connection cnx = MyConnection.getInstance().getCnx();
 
      
-     //ADD_Book
+   // new Cart
      public void newCart(){
         try {
             String req = "INSERT INTO CART(qte,cartWorth) VALUES(0,0) )";
@@ -38,6 +38,8 @@ public class CartCRUD {
         }   catch (SQLException ex) {
             System.out.println(ex.getMessage());}
     }
+     
+       //ADD_Book
     public void addBook(Book b , Cart c){
         List<Book> myList = c.getBooks();
         try {
@@ -56,6 +58,7 @@ public class CartCRUD {
         }
     }
         //delete cart
+    /*
     public void deleteCart(Cart c){
         try {
             String request = "DELETE FROM Cart where id =?";
@@ -66,6 +69,29 @@ public class CartCRUD {
             System.out.println("Cart deleted!");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());        }
+    }
+*/
+    public Cart updateCart(Cart c){
+                          try {   String req = "Select sum(price),count(price) from book where isbn in "
+                       + "(select id_book from cart_book where id_cart='"+c.getId()+"')"; 
+             PreparedStatement pst = cnx.prepareStatement(req);       
+             ResultSet rs = pst.executeQuery();
+          while(rs.next()){
+            String request = "UPDATE Cart set CartWorth=?, QTE=? WHERE id=?";
+            PreparedStatement p = cnx.prepareStatement(request);
+            p.setFloat(1,  rs.getFloat(1));
+            p.setInt(2, rs.getInt(2));
+            p.setInt(3,(int) c.getId());
+            p.executeUpdate();
+            c.setCartWorth( rs.getFloat(1));
+            c.setQte(rs.getInt(2));
+            System.out.println("Cart updated");  
+          }
+         } catch (SQLException ex) {
+               Logger.getLogger(CartCRUD.class.getName()).log(Level.SEVERE, null, ex);
+      }   
+
+           return c;
     }
            //delete book
     public void deleteBook(Book b , Cart c){
@@ -81,10 +107,10 @@ public class CartCRUD {
         }
     }
                //Empty cart
-    public void emptyBook(Cart c){
+    public void emptyCart(Cart c){
         try {
             String request = "DELETE FROM cart_book  where "
-                     +"and id_cart='"+c.getId()+"'";
+                     +"id_cart='"+c.getId()+"'";
             PreparedStatement pst = cnx.prepareStatement(request);
             pst.executeUpdate();
             System.out.println("cart empty !");
@@ -93,11 +119,11 @@ public class CartCRUD {
         }
     }
 
-    public ArrayList<Book> cartBooks() {  
+    public ArrayList<Book> cartBooks(Cart c) {  
         ArrayList<Book> lb= new ArrayList<Book>();
            try {
                String req = "Select * from book where isbn in "
-                       + "(select id_book from cart_book where id_cart=1)";
+                       + "(select id_book from cart_book where id_cart='"+c.getId()+"')";
                PreparedStatement pst = cnx.prepareStatement(req);
              ResultSet rs = pst.executeQuery();
         while(rs.next()){
@@ -111,18 +137,17 @@ public class CartCRUD {
             b.setAverageRatings(rs.getFloat(6));
             b.setNbRatings(rs.getInt(7));
             b.setEditingHouse(rs.getString(8));  
-            //b.setOwner((User) rs.getObject(9));
-                                                    CategoryCRUD cr = new CategoryCRUD();
-                                                    ArrayList<Category> listCat =new ArrayList<Category>();
-                                                     String req1 = "Select id_category from book_category where id_book ="+rs.getString(1);
-                                                        PreparedStatement pst1 = cnx.prepareStatement(req1);
-                                                        ResultSet res = pst1.executeQuery();
-                                                              while(res.next()){
-                                                    for (Category cat : cr.listCategories())
-                                                        if( cat.getId() == res.getInt(1) )
-                                                        listCat.add(cat); }
-            b.setCategories(listCat);
-                                                             
+            //b.setCover(rs.getString(10));
+                CategoryCRUD cr = new CategoryCRUD();
+                ArrayList<Category> listCat =new ArrayList<Category>();
+                String req1 = "Select id_category from book_category where id_book ="+rs.getString(1);
+                PreparedStatement pst1 = cnx.prepareStatement(req1);
+                ResultSet res = pst1.executeQuery();
+                while(res.next()){
+                    for (Category cat : cr.listCategories())
+                        if( cat.getId() == res.getInt(1) )
+                            listCat.add(cat); }
+            b.setCategories(listCat);                
             lb.add(b);
         }
            } catch (SQLException ex) {

@@ -6,6 +6,7 @@
 package bookstore.gui.controllers;
 
 import bookstore.entities.Book;
+import bookstore.entities.Cart;
 import bookstore.services.CartCRUD;
 import java.net.URL;
 import java.util.ArrayList;
@@ -20,9 +21,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
@@ -37,8 +38,6 @@ public class CartController implements Initializable {
     private Button nextBook;
     @FXML
     private Button lastBook;
-    @FXML
-    private Pane bookCover;
     @FXML
     private Label name;
     @FXML
@@ -72,22 +71,45 @@ public class CartController implements Initializable {
     @FXML
     private Button cnl;
 
-    /**
-     * Initializes the controller class.
-     */
+    CartCRUD cc = new CartCRUD();
+    Cart cart;
+    
+    @FXML
+    private ImageView bookCover;
+    @FXML
+    private Label cartQTE;
+    @FXML
+    private Label worth;
+    @FXML
+    private Label bookListText;
+    
+    // init Class
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         newlist();
         selectBook();
     }    
-   
+//update cart
+   private void updateC(){
+       cart =cc.updateCart(cart);
+   }
+    
+    //Cart Books
     private void newlist() {
-        CartCRUD cc = new CartCRUD();
-        ArrayList<Book> lv = cc.cartBooks();
+        cart = new Cart();
+        //get the user cart
+        cart.setId(1);
+        ArrayList<Book> lv = cc.cartBooks(cart);
+        cart.setBooks(lv);
+         updateC();
+        cartQTE.setText("Your Cart Contains "+cart.getQte()+" Books");
+        worth.setText("Your Cart Total Worth is "+cart.getCartWorth()+" DTN");
+        bookListText.setText("Your Cart's Books Are :");
         bookList.getItems().clear();
         bookList.getItems().addAll(lv);
         bookList.getSelectionModel().select(0);
     }
+    //Next Book
     @FXML
     private void next(ActionEvent event) {
         int n=bookList.getSelectionModel().getSelectedIndex()+1;
@@ -95,7 +117,7 @@ public class CartController implements Initializable {
         bookList.getFocusModel().focus(n);
    selectBook();
     }
-
+    //Last Book
     @FXML
     private void last(ActionEvent event) {
 
@@ -107,22 +129,27 @@ public class CartController implements Initializable {
          selectBook();
         }
     }
-
+    //Remove
     @FXML
     private void btnr(ActionEvent event) {
+                   cc.deleteBook(bookList.getSelectionModel().getSelectedItem(),cart);
                    bookList.getItems().remove(bookList.getSelectionModel().getSelectedIndex());
+                   updateC();
     }
-
+    //Buy
     @FXML
     private void btnb(ActionEvent event) {
                 System.out.println("buy");
     }
-
+    //Clear
     @FXML
     private void btnc(ActionEvent event) {
+                      cc.emptyCart(cart);
                       bookList.getItems().clear();
-    }
+                      updateC();
 
+    }
+    //Search
     @FXML
     private void btns(ActionEvent event) {
               newlist();
@@ -139,8 +166,13 @@ public class CartController implements Initializable {
              bookList.getItems().addAll(bl.getItems());
                    
     }
-
-
+        //Cancel Search
+    @FXML
+    private void btncnl(ActionEvent event) {
+           newlist();
+           selectBook();
+    }
+    //Show Book
     @FXML
     private void myBooks(MouseEvent event) {    
         selectBook();
@@ -151,7 +183,7 @@ public class CartController implements Initializable {
         System.out.println(b);
 
           name.setText("title : "+b.getTitle());
-          title.setText("title : "+b.getTitle());
+          title.setText(b.getTitle());
          writer.setText("Writer : "+b.getAuthor());
         ObservableList<String> listCat= b.getCategories().stream()
                 .map(c -> c.getName())
@@ -160,14 +192,11 @@ public class CartController implements Initializable {
             disc.setText("Description : \n"+b.getTitle()+" "+b.getAuthor()+"\n\t"+b.getPrice()+"DTN");
              rating.setText("Rating : "+b.getAverageRatings());
              usr.setText("Containt Creator : "+b.getOwner());
-             price.setText("-- Price : "+b.getPrice()+" DTN--");
-         
-    }
-
-    @FXML
-    private void btncnl(ActionEvent event) {
-           newlist();
-           selectBook();
+             house.setText("Editing House : "+b.getEditingHouse());
+             price.setText("-- Price : "+b.getPrice()+" DTN --");
+             
+             //bookCover.path
+        
     }
 
     
