@@ -33,7 +33,7 @@
                <children>
                   <VBox prefHeight="173.0" prefWidth="215.0">
                      <children>
-                        <Label fx:id="title" prefHeight="26.0" prefWidth="197.0" text="Book title" textFill="#18349a" wrapText="true">
+                        <Label fx:id="title" text="Book title" textFill="#18349a" wrapText="true">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
@@ -48,6 +48,14 @@
                            <VBox.margin>
                               <Insets left="5.0" />
                            </VBox.margin>
+                        </Label>
+                        <Label fx:id="bcategory" prefHeight="17.0" prefWidth="132.0" text="Categories" textFill="#4a4646" wrapText="true">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
                         </Label>
                         <Label fx:id="price" prefHeight="26.0" prefWidth="102.0" text="50.99TND" textFill="#756c68" wrapText="true" VBox.vgrow="ALWAYS">
                            <VBox.margin>

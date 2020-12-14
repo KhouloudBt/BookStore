@@ -96,8 +96,8 @@ public class CategoryCRUD {
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
-    public ArrayList<String> ListByBook(int isbn) {
-        ArrayList<String> categories_names = new ArrayList<String>();
+    public ArrayList<String> ListByBook(String isbn) {
+        ArrayList<String> categories_names = new ArrayList<>();
         try {
             String request = "select c.name from book_category bc, category c where bc.id_book=" + isbn + " and bc.id_category = c.id";
             Statement st = cnx.createStatement();

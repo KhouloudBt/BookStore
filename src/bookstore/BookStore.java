@@ -5,7 +5,7 @@
  */
 package bookstore;
 
-import bookstore.utilities.RegexTests;
+import bookstore.services.CategoryCRUD;
 
 /**
  *
@@ -20,8 +20,8 @@ public class BookStore {
 
     public static void main(String[] args) {
 
-        RegexTests rgx= new RegexTests();
-        System.out.println(rgx.isAvalidCategory("khouloud Ben Taoues"));
+        CategoryCRUD vr = new CategoryCRUD();
+        System.out.println(vr.ListByBook("4569871236548"));
         
 
     }
