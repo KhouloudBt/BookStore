@@ -6,28 +6,24 @@
 package bookstore.entities;
 
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  *
  * @author khoul
  */
 public class Category {
-    private static final AtomicInteger count = new AtomicInteger(0); 
 
     private int id;
     private String name;
     private String description;
 
     public Category() {
-        this.id = count.incrementAndGet();
 
     }
 
     public Category(String name, String description) {
         this.name = name;
         this.description = description;
-        this.id = count.incrementAndGet(); 
     }
 
     public int getId() {

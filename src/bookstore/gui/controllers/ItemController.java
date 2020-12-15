@@ -40,6 +40,7 @@ public class ItemController {
     @FXML
     private ImageView img;
 
+
     CategoryCRUD category_rud = new CategoryCRUD();
     @FXML
     private ImageView btn_cart;
@@ -108,5 +109,7 @@ public class ItemController {
     private void Addcart(MouseEvent event) {
         System.out.println("hi");
     }
+   
 
+  
 }

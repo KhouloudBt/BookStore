@@ -97,12 +97,12 @@
          <center>
             <HBox prefHeight="750.0" prefWidth="1150.0" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane prefHeight="538.0" prefWidth="1206.0" styleClass="transparent" stylesheets="@homepage.css">
+                  <ScrollPane prefHeight="516.0" prefWidth="1139.0" styleClass="transparent" stylesheets="@homepage.css">
                      <HBox.margin>
                         <Insets bottom="25.0" left="50.0" right="50.0" />
                      </HBox.margin>
                      <content>
-                        <GridPane fx:id="grid">
+                        <GridPane fx:id="grid" prefHeight="507.0" prefWidth="1092.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>

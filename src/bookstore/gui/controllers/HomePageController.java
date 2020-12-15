@@ -78,7 +78,7 @@ public class HomePageController implements Initializable {
                 //set grid width
                 grid.setMinWidth(Region.USE_COMPUTED_SIZE);
                 System.out.println(Region.USE_COMPUTED_SIZE);
-                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_PREF_SIZE);
                 grid.setMaxWidth(Region.USE_PREF_SIZE);
 
                 //set grid height
@@ -93,15 +93,6 @@ public class HomePageController implements Initializable {
         }
 
     }
-
-//    private void setChosenBook(Book book) {
-//        fruitNameLable.setText(book.getTitle());
-//        fruitPriceLabel.setText(bookstore.BookStore.CURRENCY + book.getPrice());
-//        temp_img = new Image(getClass().getResourceAsStream(book.getCover()));
-//        fruitImg.setImage(image);
-//        chosenFruitCard.setStyle("-fx-background-color: #" + getRandomColor() + ";\n"
-//                + "    -fx-background-radius: 30;");
-//    }
     private Color getRandomColor() {
         Random rand = new Random();
         float r = (float) (rand.nextFloat() / 2f + 0.5);

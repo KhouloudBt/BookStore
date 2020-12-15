@@ -25,6 +25,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -70,6 +71,8 @@ public class AddBooksController implements Initializable {
     private List<Category> categories;
     @FXML
     private Button cancel_btn;
+    @FXML
+    private TextArea description;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -105,7 +108,7 @@ public class AddBooksController implements Initializable {
         Resource resource=new Resource();
         for (File file : f) {
             try {
-             resource = new Resource(file.getAbsolutePath());
+             resource = new Resource(file.getAbsolutePath(),isbn_txt.getText());
              resource_crud.addResource(resource);
              resources_list.add(resource);
             } catch (Exception ex)
@@ -170,7 +173,8 @@ public class AddBooksController implements Initializable {
                          editingHouse_txt.getText(),
                          checked_categories,
                          resources_list,
-                         cover_path_txt);
+                         cover_path_txt,
+                description.getText());
                 book_crud.addBook(b);
             } catch (Exception ex) {
                 CustomAlert.showErrorAlert("Error", "Error while creating Book"+ex.getMessage());
@@ -178,7 +182,7 @@ public class AddBooksController implements Initializable {
 
             }
             }
-            if (book_created) {
+            if (book_created==true) {
                 CustomAlert.showInformationAlert("Book created ", "The book was created successfully!");
             }
         }
@@ -192,6 +196,18 @@ public class AddBooksController implements Initializable {
     private void closeAction(ActionEvent event) {
                 ((Node) (event.getSource())).getScene().getWindow().hide();
 
+    }
+    
+    public void clear()
+    {
+        isbn_txt.clear();
+        author_txt.clear();
+        description.clear();
+        editingHouse_txt.clear();
+        price_txt.clear();
+        
+                
+        
     }
 
 }

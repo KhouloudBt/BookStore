@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-radius: 10; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.ItemController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="310.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.UpdateBookController">
    <children>
       <VBox prefHeight="412.0" prefWidth="310.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
          <children>
@@ -29,7 +29,7 @@
                   </VBox>
                </children>
             </VBox>
-            <HBox prefHeight="213.0" prefWidth="207.0" VBox.vgrow="ALWAYS">
+            <HBox prefHeight="155.0" prefWidth="310.0" VBox.vgrow="ALWAYS">
                <children>
                   <HBox>
                      <children>
@@ -94,14 +94,25 @@
                   </HBox>
                   <VBox prefHeight="108.0" prefWidth="128.0">
                      <children>
-                        <ImageView fx:id="btn_cart" fitHeight="37.0" fitWidth="52.0" onMouseClicked="#Addcart" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/cart.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets left="35.0" />
-                           </VBox.margin>
-                        </ImageView>
+                        <HBox>
+                           <children>
+                              <ImageView fx:id="btn_delete" fitHeight="33.0" fitWidth="27.0" onMouseClicked="#delete" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/delete.jpg" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="btn_update" fitHeight="29.0" fitWidth="44.0" onMouseClicked="#update" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/edit.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="btn_cart" fitHeight="28.0" fitWidth="30.0" onMouseClicked="#Addcart" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/cart.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
                         <Label fx:id="nbRating" prefHeight="26.0" prefWidth="114.0" text="(123700)">
                            <font>
                               <Font size="17.0" />

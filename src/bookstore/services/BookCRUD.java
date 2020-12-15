@@ -9,6 +9,7 @@ import bookstore.MyConnection;
 import bookstore.entities.Book;
 import bookstore.entities.Category;
 import bookstore.entities.Resource;
+import bookstore.utilities.CustomAlert;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,18 +28,26 @@ import javafx.collections.ObservableList;
 public class BookCRUD {
 
     Connection cnx = MyConnection.getInstance().getCnx();
+    CustomAlert alert = new CustomAlert();
+    ResourceCRUD resource_crud = new ResourceCRUD();
 
     //ADD_Book
     public void addBook(Book book) {
         try {
-            String request = "INSERT INTO book(isbn,title,author,price,EditingHouse) VALUES"
-                    + "('" + book.getIsbn() + "'"
-                    + ",'" + book.getTitle() + "'"
-                    + ",'" + book.getAuthor() + "'"
-                    + ",'" + book.getPrice() + "'"
-                    + ",'" + book.getEditingHouse() + "')";
+            
+            String request = "Insert into book (isbn, title, author, price, EditingHouse, cover, description) values (?,?,?,?,?,?,?)";
+            PreparedStatement pst = cnx.prepareStatement(request);
+            pst.setString(1, book.getIsbn());
+            pst.setString(2, book.getTitle());
+            pst.setString(3, book.getAuthor());
+            pst.setFloat(4, book.getPrice());
+            pst.setString(5, book.getEditingHouse());
+            pst.setString(6, book.getCover());
+            pst.setString(7, book.getDesciption());
+            pst.executeUpdate();
+            System.out.println("Book Added");
+      
             Statement st = cnx.createStatement();
-            st.executeUpdate(request);
 
             for (Category cat : book.getCategories()) {
                 String request2 = "INSERT INTO book_category VALUES"
@@ -46,15 +55,27 @@ public class BookCRUD {
                         + ",'" + cat.getId() + "')";
                 st.executeUpdate(request2);
             }
-            for (Resource resource : book.getResourcesList()) {
-                String request2 = "INSERT INTO resource_book VALUES"
+            
+            for (Resource resource : book.getResourcesList())
+            {
+                try{
+                   String request3 = "INSERT INTO resource VALUES"
                         + "('" + book.getIsbn() + "'"
-                        + ",'" + resource.getId() + "')";
-                st.executeUpdate(request2);
+                        + ",'" + resource.getPath() + "')";
+                st.executeUpdate(request3);
+                } catch(Exception ex)
+                {
+                    System.out.println("Error while adding resource"+ex.getMessage());
+                }
             }
-            System.out.println("Book added !");
+            
+            
+          
+            System.out.println("categories added !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+            alert.showErrorAlert("Failure", "Error while adding the book"+ex.getMessage());
+                
         }
     }
 
