@@ -41,6 +41,8 @@ public class ItemController {
     private ImageView img;
 
     CategoryCRUD category_rud = new CategoryCRUD();
+    @FXML
+    private ImageView btn_cart;
 
     private void click(MouseEvent mouseEvent) {
         myListener.onClickListener(book);
@@ -66,8 +68,10 @@ public class ItemController {
         }
 
         avgRating.setRating(book.getAverageRatings());
-        nbRating.setText(book.getNbRatings() + "");
+        nbRating.setText("+"+book.getNbRatings()+ "+");
         author.setText(book.getAuthor());
+        title.setText(book.getTitle());
+
         String categories = "";
         List categories_names = category_rud.ListByBook(book.getIsbn());
         System.out.println(categories_names);
@@ -85,9 +89,7 @@ public class ItemController {
             }
 
         }
-
-//        bcategory.setText(book.getCategories());
-        title.setText(book.getTitle());
+        bcategory.setText(categories);
 
     }
 
@@ -99,7 +101,11 @@ public class ItemController {
         System.out.println("average rating" + avg_rating);
         this.book.setNbRatings(nb_ratings + 1);
         this.book.setAverageRatings((double) (avg_rating + new_rating) / book.getNbRatings());
-        nbRating.setText(book.getNbRatings() + "");
+        nbRating.setText("+"+book.getNbRatings()+ "+");
+    }
+
+    @FXML
+    private void Addcart(MouseEvent event) {
     }
 
 }
