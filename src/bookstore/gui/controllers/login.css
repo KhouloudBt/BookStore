@@ -1,0 +1,33 @@
+.mainFxmlClass {
+        -fx-background-color:linear-gradient(from 25% 25% to 100% 100%, #9d14dc, #005eff);
+
+}
+.card{
+    -fx-background-color:white;
+    -fx-border-radius:25px;
+    -fx-background-radius:25px;
+}
+
+.lbl-status{
+    -fx-background-color:#9d14dc;
+    -fx-text-fill:white;
+    -fx-alignment:CENTER;
+    -fx-font-size:16px;
+    -fx-border-radius:8px;
+-fx-background-radius:8px;
+}
+.lbl-user{
+    
+    -fx-text-fill:black;
+    -fx-alignment:CENTER;
+    -fx-font-size:16px;
+   -fx-font-weight:600;
+}
+/*USE TAB PANE AS NAVIGATION HACK*/
+.tab-pane{
+    -fx-tab-max-height:0px;
+    
+}
+.tab-pane .tab-header-area{
+    visibility: hidden;
+}

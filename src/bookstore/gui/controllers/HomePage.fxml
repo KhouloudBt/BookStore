@@ -24,7 +24,7 @@
                   <Insets bottom="10.0" left="10.0" top="10.0" />
                </HBox.margin>
                <image>
-                  <Image url="@img/books.png" />
+                  <Image url="@../xml/img/books.png" />
                </image>
             </ImageView>
             <Label prefHeight="99.0" prefWidth="260.0" text="BOOK Store Avengers">
@@ -68,6 +68,11 @@
             <JFXButton prefHeight="63.0" prefWidth="117.0" text="SignUp" />
             <JFXButton prefHeight="63.0" prefWidth="117.0" text="LogIn" />
             <JFXButton prefHeight="63.0" prefWidth="117.0" text="Cart" />
+            <JFXButton fx:id="return_btn" buttonType="RAISED" onAction="#Return" ripplerFill="BLACK" text="Return">
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin>
+            </JFXButton>
          </children>
          <BorderPane.margin>
             <Insets />

@@ -63,7 +63,6 @@ public class AddBooksController implements Initializable {
     List<String> coverExtensions;
     List<Resource> resources_list;
     String cover_path_txt;
-    RegexTests rgx = new RegexTests();
     CategoryCRUD category_crud = new CategoryCRUD();
     BookCRUD book_crud = new BookCRUD();
     ResourceCRUD resource_crud = new ResourceCRUD();
@@ -150,10 +149,10 @@ public class AddBooksController implements Initializable {
                 || resources_list.isEmpty()
                 || cover_path_txt.equals("") == true) {
             CustomAlert.showErrorAlert("Form Error!", "Please fill all the fields");
-        } else if (!(rgx.IsvalidIsbn(isbn_txt.getText())
-                && rgx.isValidPrice(price_txt.getText())
-                && rgx.containsOnlyLettersAndSpaces(editingHouse_txt.getText())
-                && rgx.containsOnlyLettersAndSpaces(author_txt.getText()))) {
+        } else if (!(RegexTests.IsvalidIsbn(isbn_txt.getText())
+                && RegexTests.isValidPrice(price_txt.getText())
+                && RegexTests.containsOnlyLettersAndSpaces(editingHouse_txt.getText())
+                && RegexTests.containsOnlyLettersAndSpaces(author_txt.getText()))) {
             CustomAlert.showErrorAlert("Form Error!", "Invalid data");
             return;
         } else {
@@ -174,8 +173,8 @@ public class AddBooksController implements Initializable {
                          checked_categories,
                          resources_list,
                          cover_path_txt,
-                description.getText());
-                book_crud.addBook(b);
+                         description.getText());
+                         book_crud.addBook(b);
             } catch (Exception ex) {
                 CustomAlert.showErrorAlert("Error", "Error while creating Book"+ex.getMessage());
                 book_created = false;
@@ -205,9 +204,6 @@ public class AddBooksController implements Initializable {
         description.clear();
         editingHouse_txt.clear();
         price_txt.clear();
-        
-                
-        
     }
 
 }

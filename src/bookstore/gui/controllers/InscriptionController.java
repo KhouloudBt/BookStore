@@ -1,11 +1,12 @@
 package bookstore.gui.controllers;
 
-import bookstore.services.RegisterService;
 import bookstore.entities.User;
+import bookstore.services.RegisterService;
+import bookstore.utilities.CustomAlert;
+import bookstore.utilities.RegexTests;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -46,8 +46,7 @@ public class InscriptionController implements Initializable {
     private TextField tfusername;
     @FXML
     private Label flogin;
-    @FXML
-    private TextField id_user;
+  
     
 
     /**
@@ -63,50 +62,36 @@ public class InscriptionController implements Initializable {
         Window owner =btSave.getScene().getWindow();
 
         User u = new User();
-        if (tfname.getText().isEmpty() ) {
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                "Please enter your name");
-            return;
+        if (tfname.getText().isEmpty() || tfphone.getText().isEmpty()
+                || tfmail.getText().isEmpty()
+                || tfpassword.getText().isEmpty()
+                || tfcpassword.getText().isEmpty()) {
+            CustomAlert.showErrorAlert("Data errors!","Please fill all fields");
         }
-        if (tflastName.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                "Please enter your las name");
-            return;
-        }
-        if (tfphone.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                "Please enter your phone");
-            return;
-        }
-        if (tfmail.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, owner, "Mail Error!",
-                "Please enter your mail");
-            return;
-        }
-        if (tfpassword.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, owner, "Password Error!",
-                "Please enter your password");
-            return;
-        }
-        if (tfcpassword.getText().isEmpty() ) {
-            
-            showAlert(Alert.AlertType.ERROR, owner, "Password Error!",
-                "Please confirm your password!");
-            return;
-        }
+        
+        else {
         String p = tfpassword.getText();
         String pc = tfcpassword.getText();
         if (p.matches(pc) == false){
-            showAlert(Alert.AlertType.ERROR, owner, "Password Error!",
-                "Please check your password!");
-            return;
-        }
-//        if (!RegexTests.isValidMail(tfmail.getText()));
-//        {CustomAlert.showErrorAlert("Email error", " invalid error");
-//            
+        CustomAlert.showErrorAlert("Passwords error", "Passwords don't match");
+           }
+//        else if (RegexTests.isValidPassword(tfpassword.getText())==false)
+//        {
+//            CustomAlert.showErrorAlert("Error","Invalid password" );
 //        }
+        else if (RegexTests.isAvalidPhone(tfphone.getText())==false)
+                {
+                 CustomAlert.showErrorAlert("Error","Invalid phone" );
+
+                }
+        else if (tfusername.getText().length()<4)
+        {
+         CustomAlert.showErrorAlert("Error","Username should contain at least 4 characters" );
+        }
+        else{
+            boolean logged=true;
+       try{
         u.setFirstName(tfname.getText());
-        u.setId(Integer.parseInt(id_user.getText()));
         u.setLastName(tflastName.getText());
         u.setUsername(tfusername.getText());
         u.setPhone(tfphone.getText());
@@ -114,23 +99,25 @@ public class InscriptionController implements Initializable {
         u.setPassword(tfpassword.getText());
         RegisterService rc = new RegisterService();
         rc.insertUser(u);
-       
-        Parent user = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        CustomAlert.showInformationAlert("Succes","User added successfully!");
+
+         } catch (Exception ex)
+            {logged=false;
+                CustomAlert.showErrorAlert("Failure", "Error while adding the user"+ex.getMessage());
+            }
+       if (logged==true){
+        Parent user = FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene scene = new Scene(user);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.setScene(scene);
-        primaryStage.show();
+        primaryStage.show();}
+           
+        }
         
     }
-
-    private void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.initOwner(owner);
-        alert.show();
     }
+
+ 
 
     @FXML
     private void goLogin(MouseEvent event) throws IOException{

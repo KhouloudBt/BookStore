@@ -66,7 +66,7 @@ public class UpdateBookController  {
 
     @FXML
     private void delete(MouseEvent event) {
-        CustomAlert.showConfirmationAlert("Confirm delet", "The book "+book.getTitle()+"is going to be deleted");
+        CustomAlert.showConfirmationAlert("Confirm delete", "The book "+book.getTitle()+"is going to be deleted");
         try{
         book_crud.deleteBook(book);
         }catch (Exception ex)

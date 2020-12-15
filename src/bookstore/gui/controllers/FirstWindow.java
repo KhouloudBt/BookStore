@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bookstore.gui.xml;
+package bookstore.gui.controllers;
 
 import java.io.IOException;
 import javafx.application.Application;
@@ -21,7 +21,8 @@ public class FirstWindow extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));//la 1er fenetre à afficher
+            Parent root = FXMLLoader.load(getClass().getResource("Inscription"
+                    + ".fxml"));//la 1er fenetre à afficher
             
             Scene scene = new Scene(root,1200,786);            
             primaryStage.setTitle("Our book store");

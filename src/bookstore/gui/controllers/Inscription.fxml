@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="786.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bookstore.views.InscriptionController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="786.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.InscriptionController">
     <stylesheets>
         <URL value="@inscription.css" />
     </stylesheets>
@@ -51,7 +51,7 @@
       </Text>
       <Pane layoutX="713.0" layoutY="52.0" prefHeight="627.0" prefWidth="529.0" styleClass="card" stylesheets="@inscription.css" AnchorPane.rightAnchor="94.0">
          <children>
-            <Text layoutX="34.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up" textAlignment="CENTER" underline="true" wrappingWidth="180.546875">
+            <Text layoutX="18.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up" textAlignment="CENTER" underline="true" wrappingWidth="198.0000078678131">
                <font>
                   <Font name="System Bold" size="33.0" />
                </font>
@@ -91,8 +91,6 @@
                </cursor>
             </Button>
             <Label layoutX="99.0" layoutY="265.0" text="Username :" />
-            <TextField fx:id="id_user" layoutX="322.0" layoutY="119.0" promptText="Enter identifier" />
-            <Label layoutX="83.0" layoutY="118.0" text="Identifier" />
          </children>
       </Pane>
       <ImageView fitHeight="240.0" fitWidth="239.0" layoutX="174.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">

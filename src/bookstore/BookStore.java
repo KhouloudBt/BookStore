@@ -5,7 +5,7 @@
  */
 package bookstore;
 
-import bookstore.services.CategoryCRUD;
+import bookstore.utilities.RegexTests;
 
 /**
  *
@@ -20,10 +20,8 @@ public class BookStore {
 
     public static void main(String[] args) {
 
-        CategoryCRUD vr = new CategoryCRUD();
-        System.out.println(vr.ListByBook("4569871236548"));
+        System.out.println(RegexTests.isValidPassword("ABC.info13"));
         
-
     }
     
 }
