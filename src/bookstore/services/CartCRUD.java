@@ -118,7 +118,21 @@ public class CartCRUD {
             System.out.println(ex.getMessage());
         }
     }
-
+//book exsist in cart
+    public boolean exsistInCart(Cart c, Book b){
+           try {
+               String req = "select count(*) from cart_book where id_cart='"+c.getId()+"' and id_book='"+b.getIsbn()+"'";
+               PreparedStatement pst = cnx.prepareStatement(req);
+               ResultSet rs = pst.executeQuery();
+               while(rs.next()){
+               return rs.getInt(1)!=0;
+               }
+           } catch (SQLException ex) {
+               Logger.getLogger(CartCRUD.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           return false;
+    }
+//book list
     public ArrayList<Book> cartBooks(Cart c) {  
         ArrayList<Book> lb= new ArrayList<Book>();
            try {
@@ -137,6 +151,7 @@ public class CartCRUD {
             b.setNbRatings(rs.getInt(7));
             b.setEditingHouse(rs.getString(8));  
             b.setCover(rs.getString(10));
+            b.setDesciption(rs.getString(11));
                 CategoryCRUD cr = new CategoryCRUD();
                 ArrayList<Category> listCat =new ArrayList<Category>();
                 String req1 = "Select id_category from book_category where id_book ="+rs.getString(1);

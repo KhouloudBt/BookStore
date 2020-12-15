@@ -14,14 +14,21 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -71,8 +78,6 @@ public class HomePageController implements Initializable {
                     column = 0;
                     row++;
                 }
-                System.out.println("hné " );
-
                 grid.add(anchorPane, column++, row);
                 System.out.println("anchor id " + anchorPane.getId());
                 //set grid width
@@ -108,6 +113,22 @@ public class HomePageController implements Initializable {
         float g = (float) (rand.nextFloat() / 2f + 0.5);
         float b = (float) (rand.nextFloat() / 2f + 0.5);
         return new Color(r, g, b);
+    }
+
+    @FXML
+    private void oppenCart(MouseEvent event) {
+          System.out.println("OPEN CART");
+         Parent user;
+        try {
+            user = FXMLLoader.load(getClass().getResource("/bookstore/gui/xml/Cart.fxml"));
+     
+        Scene scene = new Scene(user);
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        primaryStage.setScene(scene);
+        primaryStage.show();  
+        } catch (IOException ex) {
+            Logger.getLogger(HomePageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

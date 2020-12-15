@@ -162,7 +162,7 @@ public class CartController implements Initializable {
           bl = new ListView<Book>();
              for (Book b : bookList.getItems()) {
             
-                 if (searchBar.getText().contains(b.getTitle())) {
+                 if (b.getTitle().contains(searchBar.getText())) {
                     bl.getItems().add(b);
                  }
             
@@ -194,7 +194,7 @@ public class CartController implements Initializable {
                 .map(c -> c.getName())
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
           type.setText("Categories : "+listCat);
-            disc.setText("Description : \n"+b.getTitle()+" "+b.getAuthor()+"\n\t"+b.getPrice()+"DTN");
+            disc.setText("Description : \n"+b.getDesciption());
              rating.setText("Rating : "+b.getAverageRatings());
              usr.setText("Containt Creator : "+b.getOwner());
              house.setText("Editing House : "+b.getEditingHouse());
@@ -202,7 +202,7 @@ public class CartController implements Initializable {
              System.out.println(b.getCover());
 
         try {
-            File file = new File(b.getCover().trim());
+            File file = new File("C:\\\\Books\\\\"+b.getCover().trim());
             InputStream stream = new FileInputStream(file);
             Image image = new Image(stream);
             bookCover.setImage(image);

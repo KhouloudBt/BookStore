@@ -12,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="393.0" prefWidth="310.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.ItemController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-radius: 10; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.ItemController">
    <children>
-      <VBox style="-fx-background-radius: 10; -fx-border-radius: 10;">
+      <VBox prefHeight="412.0" prefWidth="310.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
          <children>
             <VBox>
                <children>
@@ -22,67 +22,96 @@
                      <children>
                         <ImageView fx:id="img" fitHeight="199.0" fitWidth="309.0" pickOnBounds="true">
                            <image>
-                              <Image url="@../../../../../../../../../../image/dafault.png" />
+                              <Image url="@img/panda.jpg" />
                            </image>
                         </ImageView>
                      </children>
                   </VBox>
                </children>
             </VBox>
-            <HBox VBox.vgrow="ALWAYS">
+            <HBox prefHeight="213.0" prefWidth="207.0" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox prefHeight="173.0" prefWidth="215.0">
+                  <HBox>
                      <children>
-                        <Label fx:id="title" prefHeight="26.0" prefWidth="197.0" text="Book title" textFill="#18349a" wrapText="true">
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="5.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="author" text="By: Book Author" textFill="#4a4646" wrapText="true">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="5.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="price" prefHeight="26.0" prefWidth="102.0" text="50.99TND" textFill="#756c68" wrapText="true" VBox.vgrow="ALWAYS">
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                        </Label>
-                        <Rating fx:id="avgRating" rating="0.0" updateOnHover="true">
-                           <effect>
-                              <DropShadow color="#dd43db" />
-                           </effect>
-                        </Rating>
-                        <JFXButton fx:id="btn_rate" buttonType="RAISED" onAction="#Rate" prefHeight="39.0" prefWidth="100.0" ripplerFill="#112594" text="Rate" wrapText="true">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets right="20.0" />
-                           </opaqueInsets>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </JFXButton>
+                        <VBox>
+                           <children>
+                              <Label fx:id="title" text="Book title" textFill="#18349a" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="author" text="By: Book Author" textFill="#4a4646" wrapText="true">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="bcategory" prefHeight="17.0" prefWidth="132.0" text="Categories" textFill="#4a4646" wrapText="true">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="price" prefHeight="26.0" prefWidth="102.0" text="50.99TND" textFill="#756c68" wrapText="true" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Rating fx:id="avgRating" rating="0.0" updateOnHover="true">
+                                 <effect>
+                                    <DropShadow color="#dd43db" />
+                                 </effect>
+                              </Rating>
+                              <JFXButton fx:id="btn_rate" buttonType="RAISED" onAction="#Rate" prefHeight="39.0" prefWidth="100.0" ripplerFill="#112594" text="Rate" wrapText="true">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets right="20.0" />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </JFXButton>
+                           </children>
+                        </VBox>
                      </children>
-                  </VBox>
-                  <Label fx:id="nbRating" prefHeight="26.0" prefWidth="70.0" text="(123700)">
+                  </HBox>
+                  <HBox>
                      <HBox.margin>
                         <Insets left="15.0" right="25.0" top="105.0" />
                      </HBox.margin>
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
+                  </HBox>
+                  <VBox prefHeight="108.0" prefWidth="128.0">
+                     <children>
+                        <ImageView fx:id="btn_cart" fitHeight="37.0" fitWidth="52.0" onMouseClicked="#addCart" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/cart.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets left="35.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label fx:id="nbRating" prefHeight="26.0" prefWidth="114.0" text="(123700)">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="70.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
          </children>

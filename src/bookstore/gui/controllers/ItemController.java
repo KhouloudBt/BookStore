@@ -1,6 +1,8 @@
 package bookstore.gui.controllers;
 
 import bookstore.entities.Book;
+import bookstore.entities.Cart;
+import bookstore.services.CartCRUD;
 import bookstore.services.CategoryCRUD;
 import bookstore.utilities.CustomAlert;
 import bookstore.utilities.MyListener;
@@ -8,13 +10,21 @@ import com.jfoenix.controls.JFXButton;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 
 public class ItemController {
@@ -40,6 +50,8 @@ public class ItemController {
     private ImageView img;
     
     CategoryCRUD cr = new CategoryCRUD();
+    @FXML
+    private ImageView btn_cart;
     
 
     private void click(MouseEvent mouseEvent) {
@@ -55,9 +67,13 @@ public class ItemController {
         price.setText("" + book.getPrice());
         System.out.println("here1 ");
         System.out.println(book.getCover());
-
+               Cart cart = new Cart();
+               cart.setId(1);
+            CartCRUD cc = new CartCRUD();
+            if(cc.exsistInCart(cart,this.book))
+                btn_cart.setImage(null);
         try {
-            File file = new File(book.getCover().trim());
+            File file = new File("C:\\\\Books\\\\"+book.getCover().trim());
             InputStream stream = new FileInputStream(file);
             Image image = new Image(stream);
             img.setImage(image);
@@ -93,6 +109,26 @@ public class ItemController {
         this.book.setNbRatings(nb_ratings + 1);
         this.book.setAverageRatings((double) (avg_rating + new_rating) / book.getNbRatings());
         nbRating.setText(book.getNbRatings()+"");
+    }
+
+    @FXML
+    private void addCart(MouseEvent event) {
+        Cart cart = new Cart();
+        cart.setId(1);
+            CartCRUD cc = new CartCRUD();
+            cc.addBook(this.book, cart);
+              System.out.println("OPEN CART");
+         Parent user;
+        try {
+            user = FXMLLoader.load(getClass().getResource("/bookstore/gui/xml/Cart.fxml"));
+     
+        Scene scene = new Scene(user);
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        primaryStage.setScene(scene);
+        primaryStage.show();  
+        } catch (IOException ex) {
+            Logger.getLogger(HomePageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
