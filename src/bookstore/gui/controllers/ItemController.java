@@ -101,11 +101,12 @@ public class ItemController {
         System.out.println("average rating" + avg_rating);
         this.book.setNbRatings(nb_ratings + 1);
         this.book.setAverageRatings((double) (avg_rating + new_rating) / book.getNbRatings());
-        nbRating.setText("+"+book.getNbRatings()+ "+");
+        nbRating.setText("("+book.getNbRatings()+ ")");
     }
 
     @FXML
     private void Addcart(MouseEvent event) {
+        System.out.println("hi");
     }
 
 }
