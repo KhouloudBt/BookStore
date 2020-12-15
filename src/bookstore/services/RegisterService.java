@@ -5,20 +5,19 @@
  */
 package bookstore.services;
 
-import bookstore.MyConnection;
-import bookstore.entities.User;
+import edu.bookstore.connection.CustomAlert;
+import edu.bookstore.connection.MyConnection;
+import edu.bookstore.models.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Emna
  */
 public class RegisterService {
-    Connection cnx;
+       Connection cnx;
 
     public RegisterService() {
         cnx = MyConnection.getInstance().getCnx();
@@ -26,20 +25,38 @@ public class RegisterService {
     
     public void insertUser(User u){
         try {
-            String request = "INSERT INTO user VALUES (default,?,?,?,?,?,?,?)";
+            String request = "INSERT INTO user(id,firstname,lastname,phone) VALUES (?,?,?,?)";
             PreparedStatement pst = cnx.prepareStatement(request);
-            pst.setString(1, u.getFirstName());
-            pst.setString(2,u.getLastName());
-            pst.setString(3,u.getUsername());
+            pst.setInt(1, u.getId());
+            pst.setString(2, u.getFirstName());
+            pst.setString(3,u.getLastName());
             pst.setString(4,u.getPhone());
-            pst.setString(5,u.getEmail());
-            pst.setString(6,u.getPassword());
-            pst.setString(7,u.getConfirmPassword());
             pst.executeUpdate();
             System.out.println("user added succesfully");
+            
+            String req = "INSERT INTO login (email,username,user_password,id_user)VALUES (?,?,?,?)";
+            PreparedStatement p = cnx.prepareStatement(req);
+            p.setString(1, u.getEmail());
+            p.setString(2, u.getUsername());
+            p.setString(3, u.getPassword());
+            p.setInt(4, u.getId());
+            System.out.println("hounu");
+            try{
+            p.executeUpdate();
+            System.out.println("succeeess");
+
+            } catch(Exception ex )
+            {
+                System.out.println("eeeeeeeeeerrrrrrrrrrrrrrorrrrr"+ex.getMessage());
+        }
+            System.out.println("user added succesfully into login");
+
+            
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());        }
-    }
+        CustomAlert. showErrorAlert("Register Error", ex.getMessage());   }
    
+    
+}
+    
     
 }
