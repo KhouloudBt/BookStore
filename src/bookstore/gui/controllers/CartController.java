@@ -83,7 +83,7 @@ public class CartController implements Initializable {
     private Button cnl;
 
     CartCRUD cc = new CartCRUD();
-    Cart cart;
+    Cart cart = new Cart();
     
     @FXML
     private ImageView bookCover;
@@ -104,23 +104,37 @@ public class CartController implements Initializable {
     }    
 //update cart
    private void updateC(){
+        ArrayList<Book> lv = cc.cartBooks(cart);
+        bookList.getItems().clear();
+        bookList.getItems().addAll(lv);
+        cart.setBooks(lv);
+           noBookSelected();
        cart =cc.updateCart(cart);
+       if (cart.getBooks().isEmpty()){
+           cartQTE.setText("No Books In Your Cart !!!");
+        worth.setText("");
+        bookListText.setText("");
+        noBookSelected();
+   }
+       else if (cart.getBooks().size()==1){
+        cartQTE.setText("Your Cart only Contains 1 Book");
+        worth.setText("Your Cart Total Worth is "+cart.getCartWorth()+" DTN");
+        bookListText.setText("Your Cart's Book is :");
+       }
+       else{
+        cartQTE.setText("Your Cart Contains "+cart.getQte()+" Books");
+        worth.setText("Your Cart Total Worth is "+cart.getCartWorth()+" DTN");
+        bookListText.setText("Your Cart's Books Are :");
+               }
+       
    }
     
     //Cart Books
     private void newlist() {
-        cart = new Cart();
-        //get the user cart
         cart.setId(1);
-        ArrayList<Book> lv = cc.cartBooks(cart);
-        cart.setBooks(lv);
          updateC();
-        cartQTE.setText("Your Cart Contains "+cart.getQte()+" Books");
-        worth.setText("Your Cart Total Worth is "+cart.getCartWorth()+" DTN");
-        bookListText.setText("Your Cart's Books Are :");
-        bookList.getItems().clear();
-        bookList.getItems().addAll(lv);
         bookList.getSelectionModel().select(0);
+             
     }
     //Next Book
     @FXML
@@ -145,9 +159,11 @@ public class CartController implements Initializable {
     //Remove
     @FXML
     private void btnr(ActionEvent event) {
-                   cc.deleteBook(bookList.getSelectionModel().getSelectedItem(),cart);
+                   cc.deleteBook(bookList.getSelectionModel().getSelectedItem(),cart);    
                    bookList.getItems().remove(bookList.getSelectionModel().getSelectedIndex());
+                   noBookSelected();
                    updateC();
+               
     }
     //Buy
     @FXML
@@ -157,9 +173,11 @@ public class CartController implements Initializable {
     //Clear
     @FXML
     private void btnc(ActionEvent event) {
-                      cc.emptyCart(cart);
-                      bookList.getItems().clear();
+                      cc.emptyCart(cart);       
+                      bookList.getItems().clear();              
+                      noBookSelected();
                       updateC();
+   
 
     }
     //Search
@@ -184,6 +202,8 @@ public class CartController implements Initializable {
     private void btncnl(ActionEvent event) {
            newlist();
            selectBook();
+           searchBar.setText("");
+           noBookSelected();
     }
     //Show Book
     @FXML
@@ -234,6 +254,20 @@ public class CartController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(CartController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void noBookSelected() {
+        
+          name.setText("");
+          title.setText("No Book Selected");
+         writer.setText("");
+          type.setText("");
+            disc.setText("");
+             rating.setText("");
+             usr.setText("");
+             house.setText("");
+             price.setText("");
+            bookCover.setImage(null);
     }
 
     
