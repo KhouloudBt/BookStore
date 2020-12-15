@@ -5,7 +5,6 @@
  */
 package bookstore.entities;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,41 +14,47 @@ import java.util.List;
  */
 public class Book {
 
-    private int isbn;
+    private String isbn;
     private String title;
     private String Author;
     private float price = 0.0f;    
     private int numberTimesBought=0;
-    private float averageRatings=0.0f;
+    private double averageRatings=0.0f;
     private int nbRatings=0;
     private String EditingHouse;
     private User owner;
-    private BufferedImage cover;
+    private String cover;
+    private String desciption;
+
+    public String getDesciption() {
+        return desciption;
+    }
+
+    public void setDesciption(String desciption) {
+        this.desciption = desciption;
+    }
     private List<Category> categories= new ArrayList<Category>();
-    private List<Resource> ResourcesList = new ArrayList<Resource>();
+    private List<Resource> resourcesList = new ArrayList<Resource>();
 
     public Book() {
     }
 
-    public Book(int isbn, String Author, List<Resource> ResourcesList) {
+    public Book(String isbn,float price, String title, String Author, String EditingHouse,List <Category> categories,List<Resource> resourcesList, String cover) {
         this.isbn = isbn;
-        this.Author = Author;
-        this.ResourcesList = ResourcesList;
-    }
-
-    public Book(int isbn, String title, String Author, float price, String EditingHouse) {
-        this.isbn = isbn;
+        this.price=price;
         this.title = title;
         this.Author = Author;
-        this.price = price;
         this.EditingHouse = EditingHouse;
+        this.cover = cover;
+        this.resourcesList=resourcesList;
+        this.categories=categories;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
@@ -77,22 +82,6 @@ public class Book {
         this.price = price;
     }
 
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
-    }
-
-    public List<Resource> getResourcesList() {
-        return ResourcesList;
-    }
-
-    public void setResourcesList(List<Resource> ResourcesList) {
-        this.ResourcesList = ResourcesList;
-    }
-
     public int getNumberTimesBought() {
         return numberTimesBought;
     }
@@ -101,11 +90,11 @@ public class Book {
         this.numberTimesBought = numberTimesBought;
     }
 
-    public float getAverageRatings() {
+    public double getAverageRatings() {
         return averageRatings;
     }
 
-    public void setAverageRatings(float averageRatings) {
+    public void setAverageRatings(double averageRatings) {
         this.averageRatings = averageRatings;
     }
 
@@ -133,17 +122,33 @@ public class Book {
         this.owner = owner;
     }
 
-    public BufferedImage getCover() {
+    public String getCover() {
         return cover;
     }
 
-    public void setCover(BufferedImage cover) {
+    public void setCover(String cover) {
         this.cover = cover;
     }
 
     @Override
     public String toString() {
-        return "Book{" + "isbn=" + isbn + ", title=" + title + ", Author=" + Author + ", price=" + price + ", categories=" + categories + ", ResourcesList=" + ResourcesList + ", numberTimesBought=" + numberTimesBought + ", averageRatings=" + averageRatings + ", nbRatings=" + nbRatings + ", EditingHouse=" + EditingHouse + ", owner=" + owner + '}';
+        return String.format("|%s\t",title) + String.format("| %s\t",Author)  +String.format("| price : %sDNT\t",price)
+                + String.format("| Ratings : %s\t",averageRatings);
+    }
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    public List<Resource> getResourcesList() {
+        return resourcesList;
+    }
+
+    public void setResourcesList(List<Resource> resourcesList) {
+        this.resourcesList = resourcesList;
     }
 
     @Override

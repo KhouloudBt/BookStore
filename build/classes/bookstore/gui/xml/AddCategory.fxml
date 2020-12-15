@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
+<<<<<<< HEAD
+
+=======
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+>>>>>>> origin/Khouloud
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="650.0" styleClass="mainFxmlClass" stylesheets="@addbook.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.AddCategoryController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="721.0" styleClass="mainFxmlClass" stylesheets="@addbooks.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.AddCategoryController">
    <children>
-      <AnchorPane layoutX="124.0" layoutY="113.0" prefHeight="439.0" prefWidth="445.0" style="-fx-background-color: white;" styleClass="card" stylesheets="@addbook.css">
+      <AnchorPane layoutX="124.0" layoutY="113.0" prefHeight="468.0" prefWidth="494.0" style="-fx-background-color: white;" styleClass="card" stylesheets="@addbooks.css">
          <children>
-            <TextField id="isbn" fx:id="Name" layoutX="107.0" layoutY="58.0" prefHeight="26.0" prefWidth="258.0" />
             <Label layoutX="27.0" layoutY="75.0" text="Name:" textFill="#969292" />
             <Label layoutX="27.0" layoutY="135.0" text="Description:" textFill="#969292" />
-            <TextArea fx:id="description" layoutX="107.0" layoutY="135.0" prefHeight="200.0" prefWidth="258.0" style="-fx-border-color: grey;" />
+            <JFXTextArea fx:id="description" layoutX="90.0" layoutY="161.0" prefHeight="206.0" prefWidth="386.0" wrapText="true" />
+            <JFXTextField fx:id="Name" layoutX="90.0" layoutY="72.0" prefHeight="26.0" prefWidth="268.0" />
          </children>
       </AnchorPane>
-      <Label contentDisplay="CENTER" ellipsisString="" layoutX="238.0" layoutY="31.0" prefHeight="44.0" prefWidth="166.0" text="Add Category" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+      <Label contentDisplay="CENTER" ellipsisString="" layoutX="258.0" layoutY="31.0" prefHeight="44.0" prefWidth="166.0" text="Add Category" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
@@ -30,14 +33,17 @@
          <image>
             <Image url="@img/home.PNG" />
          </image></ImageView>
+<<<<<<< HEAD
       <Button fx:id="btn_save" layoutX="219.0" layoutY="497.0" mnemonicParsing="false" onAction="#Save" prefHeight="32.0" prefWidth="119.0" styleClass="mainFxmlClass" stylesheets="@addbook.css" text="Save" textFill="WHITE">
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
          <effect>
             <Glow />
          </effect></Button>
       <Button fx:id="btn_cancel" cancelButton="true" defaultButton="true" layoutX="355.0" layoutY="497.0" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" prefWidth="119.0" style="-fx-background-color: grey;" stylesheets="@addbook.css" text="Cancel" textFill="WHITE" />
+=======
+      <Button fx:id="btn_save" layoutX="239.0" layoutY="527.0" mnemonicParsing="false" onAction="#Save" prefHeight="32.0" prefWidth="119.0" styleClass="mainFxmlClass" stylesheets="@addbooks.css" text="Save" textFill="WHITE">
+     </Button>
+      <Button fx:id="btn_cancel" cancelButton="true" defaultButton="true" layoutX="375.0" layoutY="527.0" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" prefWidth="119.0" style="-fx-background-color: grey;" stylesheets="@addbooks.css" text="Cancel" textFill="WHITE" />
+>>>>>>> origin/Khouloud
    </children>
    <effect>
       <Glow />

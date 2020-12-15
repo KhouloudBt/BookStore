@@ -5,11 +5,7 @@
  */
 package bookstore;
 
-import bookstore.entities.Book;
-import bookstore.entities.Category;
-import bookstore.services.BookCRUD;
-import bookstore.services.CategoryCRUD;
-import bookstore.services.RegexTests;
+import bookstore.utilities.RegexTests;
 
 /**
  *
@@ -20,9 +16,12 @@ public class BookStore {
     /**
      * @param args the command line arguments
      */
+    public static final String CURRENCY = "TND";
+
     public static void main(String[] args) {
+
         // TODO code application logic here        
-//        MyConnection cn = MyConnection.getInstance();
+        MyConnection cn = MyConnection.getInstance();
 //        Book bk = new Book(67889,"Khouloud","Rami",5.f,"hello");
 //        BookCRUD br= new BookCRUD();
 //        br.addBook(bk);
@@ -31,6 +30,11 @@ public class BookStore {
 //        catcr.addCategory(cat);
     RegexTests rgx= new RegexTests();
         System.out.println(rgx.containsOnlyLettersAndSpaces("Sience fiction"));
+/*
+        RegexTests rgx= new RegexTests();
+        System.out.println(rgx.isAvalidCategory("khouloud Ben Taoues"));
+        */
+
 
     }
     
