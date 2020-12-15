@@ -5,9 +5,9 @@
  */
 package bookstore.services;
 
-import edu.bookstore.connection.CustomAlert;
-import edu.bookstore.connection.MyConnection;
-import edu.bookstore.models.User;
+import bookstore.utilities.CustomAlert;
+import bookstore.MyConnection;
+import bookstore.entities.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -53,10 +53,10 @@ public class RegisterService {
 
             
         } catch (SQLException ex) {
-        CustomAlert. showErrorAlert("Register Error", ex.getMessage());   }
+       // CustomAlert. showErrorAlert("Register Error", ex.getMessage());  
+        }
    
     
 }
     
-    
-}
+}   
