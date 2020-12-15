@@ -20,6 +20,7 @@ Project is created with:
 To run this project you will need to install the following libraries:
 * JDBC MYSQL Driver
 * ControlsFx
+* Jfoenix
 
 ## Trello board
 This link will lead to the trello board of our team: https://trello.com/b/RA6jDDa0
