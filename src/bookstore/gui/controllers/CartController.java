@@ -11,16 +11,23 @@ import bookstore.services.CartCRUD;
 import bookstore.utilities.CustomAlert;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -29,6 +36,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -64,8 +72,6 @@ public class CartController implements Initializable {
     @FXML
     private TextField searchBar;
     @FXML
-    private AnchorPane containtCreator;
-    @FXML
     private Label title;
     @FXML
     private Label house;
@@ -87,6 +93,8 @@ public class CartController implements Initializable {
     private Label worth;
     @FXML
     private Label bookListText;
+    @FXML
+    private ImageView homeImg;
     
     // init Class
     @Override
@@ -211,6 +219,21 @@ public class CartController implements Initializable {
         }
 
         
+    }
+
+    @FXML
+    private void goHome(MouseEvent event) {
+        System.out.println("go home");
+        Parent user;
+        try {
+            user = FXMLLoader.load(getClass().getResource("/bookstore/gui/xml/HomePage.fxml"));
+        Scene scene = new Scene(user);
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        primaryStage.setScene(scene);
+        primaryStage.show();  
+        } catch (IOException ex) {
+            Logger.getLogger(CartController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     
