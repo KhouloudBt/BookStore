@@ -10,7 +10,6 @@ import bookstore.services.BookCRUD;
 import bookstore.utilities.CustomAlert;
 import bookstore.utilities.MyListener;
 import com.jfoenix.controls.JFXButton;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -60,9 +59,7 @@ public class UpdateBookController  {
      * Initializes the controller class.
      */
  
-    @FXML
-    private void Rate(ActionEvent event) {
-    }
+ //khouloud! okng ?se3a what ama i doing!!idk !
 
     @FXML
     private void delete(MouseEvent event) {
@@ -77,10 +74,10 @@ public class UpdateBookController  {
 
     @FXML
     private void update(MouseEvent event) {
+        BookCRUD cr = new BookCRUD();
+        
     }
 
-    @FXML
-    private void Addcart(MouseEvent event) {
-    }
+   
     
 }

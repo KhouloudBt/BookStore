@@ -16,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -92,17 +91,18 @@ public class LoginController implements Initializable {
         String adminname = tfusername.getText();
         String adminpass = tfpassword.getText();
         String c_password = tfcpassword.getText();
-        if (adminpass.matches(c_password) == false){
-            showAlert(Alert.AlertType.ERROR, owner, "Password Error!",
-                "Please check your password!");
-            return;
-        }
+//        if (adminpass.matches(c_password) == false){
+//            showAlert(Alert.AlertType.ERROR, owner, "Password Error!",
+//                "Please check your password!");
+//            return;
+//        }
         //user
         String nameUser = usernameUser.getText();
         String pwduser = pwdUser.getText();
-
+        System.out.println((logService.authority(nameUser).equals("Role_MEMBER")));
         LoginService lc  = new LoginService();
-        if(lc.authenticate(adminname, adminpass)){
+        if(lc.adminverified(adminname, adminpass)){
+            UserSession.getInstance(adminname);
             Parent log = FXMLLoader.load(getClass().getResource("DashAdmin.fxml"));
             Scene scene = new Scene(log);
             Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -111,7 +111,8 @@ public class LoginController implements Initializable {
             UserSession.getInstance();
             UserSession.getInstance(adminname);
         }
-        else if((logService.authority(nameUser).equals("Role_MEMBER_PREMIUM")) && lc.authenticate(nameUser, pwduser)){
+            else if((logService.authority(nameUser).equals("Role_MEMBER")) && lc.authenticate(nameUser, pwduser)){
+            UserSession.getInstance(nameUser);
             Parent log = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
             Scene scene = new Scene(log);
             Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -124,15 +125,7 @@ public class LoginController implements Initializable {
         else {
             CustomAlert.showWarningAlert("check infos", "You are not allowed to login! you may want to create an account first");
         }
-    }
-     private void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.initOwner(owner);
-        alert.show();
-    }
+    }     
 
     @FXML
     private void openAdminTab(MouseEvent event) {

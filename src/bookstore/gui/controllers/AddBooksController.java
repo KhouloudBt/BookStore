@@ -12,6 +12,7 @@ import bookstore.services.BookCRUD;
 import bookstore.services.CategoryCRUD;
 import bookstore.services.ResourceCRUD;
 import bookstore.utilities.CustomAlert;
+import bookstore.utilities.MyListener;
 import bookstore.utilities.RegexTests;
 import java.io.File;
 import java.net.URL;
@@ -27,6 +28,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import org.controlsfx.control.CheckComboBox;
@@ -72,7 +74,12 @@ public class AddBooksController implements Initializable {
     private Button cancel_btn;
     @FXML
     private TextArea description;
-
+    private Book book;
+    private MyListener myListener;
+    
+      private void click(MouseEvent mouseEvent) {
+        myListener.onClickListener(book);
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cover_path_txt = "";

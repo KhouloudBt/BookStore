@@ -6,6 +6,7 @@ import bookstore.utilities.CustomAlert;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -27,7 +28,8 @@ public class RegisterService {
             pst.setString(2,u.getLastName());
             pst.setString(3,u.getUsername());
             pst.setString(4,u.getPhone());
-            pst.setString(5,u.getPassword());
+            pst.setString(5 , BCrypt.hashpw(u.getPassword(), BCrypt.gensalt(12)));
+               System.out.println(BCrypt.hashpw(u.getPassword(), BCrypt.gensalt(12)));
             pst.setString(6,u.getEmail());
             pst.executeUpdate();
             System.out.println("user added succesfully");
