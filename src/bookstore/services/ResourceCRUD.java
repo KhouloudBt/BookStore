@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -67,25 +68,12 @@ public class ResourceCRUD {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());        }
     }
-    
-        public void UpdateCategory(Resource resource,int id){
-        try {
-            String request="UPDATE resource set ide=?, path=? WHERE id=?";
-            PreparedStatement pst = cnx.prepareStatement(request);
-            pst.setInt(1, resource.getId());
-            pst.setString(2, resource.getPath());
-            pst.setInt(3,id);
 
-            pst.executeUpdate();
-            System.out.println("Resource updated");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());        }
-    }
-//        public List<Resource> ListByBook(String id)
-//        {
-//           return this.listResources().stream()
-//                   .filter(r->r.getId_book()==id)
-//                   .collect(Collectors.toList());
-//        }
+        public List<Resource> ListByBook(String id)
+        {
+           return this.listResources().stream()
+                   .filter(r->r.getId_book()==id)
+                   .collect(Collectors.toList());
+        }
     
 }

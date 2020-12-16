@@ -5,7 +5,6 @@
  */
 package bookstore.entities;
 
-import java.io.File;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -18,6 +17,17 @@ public class Resource {
 
     private int id;
     private String path;
+    private String id_book;
+
+    public String getId_book() {
+        return id_book;
+    }
+
+    public void setId_book(String id_book) {
+        this.id_book = id_book;
+    }
+
+
 
     public Resource() {
         this.id = count.incrementAndGet();
@@ -27,6 +37,11 @@ public class Resource {
     public Resource(String path) {
         this.id = count.incrementAndGet();
         this.path = path;
+    }
+
+    public Resource(String path, String id_book) {
+        this.path = path;
+        this.id_book = id_book;
     }
 
     public int getId() {

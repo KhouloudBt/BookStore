@@ -76,13 +76,13 @@ public class CategoryCRUD {
         }
     }
 
-    public void UpdateCategory(Category cat, int id) {
+    public void UpdateCategory(Category cat) {
         try {
             String request = "UPDATE category set name=?, description=? WHERE id=?";
             PreparedStatement pst = cnx.prepareStatement(request);
             pst.setString(1, cat.getName());
             pst.setString(2, cat.getDescription());
-            pst.setInt(3, id);
+            pst.setInt(3, cat.getId());
             pst.executeUpdate();
             System.out.println("Category updated");
         } catch (SQLException ex) {
@@ -96,8 +96,8 @@ public class CategoryCRUD {
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
-    public ArrayList<String> ListByBook(int isbn) {
-        ArrayList<String> categories_names = new ArrayList<String>();
+    public ArrayList<String> ListByBook(String isbn) {
+        ArrayList<String> categories_names = new ArrayList<>();
         try {
             String request = "select c.name from book_category bc, category c where bc.id_book=" + isbn + " and bc.id_category = c.id";
             Statement st = cnx.createStatement();
@@ -123,6 +123,14 @@ public class CategoryCRUD {
         List<Category> listCat = this.listCategories();
 
         return (listCat.stream().filter(c -> c.getName().equals(name)).collect(Collectors.toList()).get(0));
+    }
+    public ObservableList <Category>SearchByNameObservable(String name) {
+        List<Category> listCat = this.listCategories();
+        return this.listCategories().stream().filter(c-> c.getName().contains(name)).collect(Collectors.toCollection(FXCollections::observableArrayList));
+
+    }
+     public ObservableList<Category> listCategoryObservable() {
+        return this.listCategories().stream().collect(Collectors.toCollection(FXCollections::observableArrayList));
     }
 
 }

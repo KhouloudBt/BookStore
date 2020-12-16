@@ -22,7 +22,7 @@
                      <children>
                         <ImageView fx:id="img" fitHeight="199.0" fitWidth="309.0" pickOnBounds="true">
                            <image>
-                              <Image url="@img/panda.jpg" />
+                              <Image url="@../xml/img/panda.jpg" />
                            </image>
                         </ImageView>
                      </children>
@@ -96,7 +96,7 @@
                      <children>
                         <ImageView fx:id="btn_cart" fitHeight="37.0" fitWidth="52.0" onMouseClicked="#addCart" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/cart.png" />
+                              <Image url="@../xml/img/cart.png" />
                            </image>
                            <VBox.margin>
                               <Insets left="35.0" />

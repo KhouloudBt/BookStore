@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
@@ -48,11 +49,11 @@ public class ItemController {
     private Label nbRating;
     @FXML
     private ImageView img;
-    
-    CategoryCRUD cr = new CategoryCRUD();
+
+
+    CategoryCRUD category_rud = new CategoryCRUD();
     @FXML
     private ImageView btn_cart;
-    
 
     private void click(MouseEvent mouseEvent) {
         myListener.onClickListener(book);
@@ -73,6 +74,7 @@ public class ItemController {
             if(cc.exsistInCart(cart,this.book))
                 btn_cart.setImage(null);
         try {
+            //          File file = new File(book.getCover().trim());
             File file = new File("C:\\\\Books\\\\"+book.getCover().trim());
             InputStream stream = new FileInputStream(file);
             Image image = new Image(stream);
@@ -82,21 +84,26 @@ public class ItemController {
         }
 
         avgRating.setRating(book.getAverageRatings());
-        nbRating.setText(book.getNbRatings() + "");
+        nbRating.setText("("+book.getNbRatings()+ ")");
         author.setText(book.getAuthor());
-        String categories="";
-        
-//        for (int i =0; i<(cr.ListByBook(book.getIsbn(); i++)
-//        {
-//            categories=categories+book.getCategories().
-//        }
-//        {
-//            
-//        }
-//        bcategory.setText(book.getCategories());
-        
-
         title.setText(book.getTitle());
+
+        String categories = "";
+        List categories_names = category_rud.ListByBook(book.getIsbn());
+        System.out.println(categories_names);
+        System.out.println(categories_names.size());
+        for (int i = 0; i < categories_names.size(); i++) {
+            System.out.println("hello");
+
+            if (i == categories_names.size()) {
+                categories.concat(categories + categories_names.get(i) + " ,");
+
+            } else {
+                categories.concat(categories + categories_names.get(i));
+            }
+
+        }
+        bcategory.setText(categories);
 
     }
 
@@ -105,13 +112,13 @@ public class ItemController {
         int nb_ratings = this.book.getNbRatings();
         double new_rating = avgRating.getRating();
         double avg_rating = this.book.getAverageRatings();
-        System.out.println("average rating"+avg_rating);
+        System.out.println("average rating" + avg_rating);
         this.book.setNbRatings(nb_ratings + 1);
         this.book.setAverageRatings((double) (avg_rating + new_rating) / book.getNbRatings());
-        nbRating.setText(book.getNbRatings()+"");
+        nbRating.setText("("+book.getNbRatings()+ ")");
     }
 
-    @FXML
+   @FXML
     private void addCart(MouseEvent event) {
         Cart cart = new Cart();
         cart.setId(1);
@@ -120,7 +127,7 @@ public class ItemController {
               System.out.println("OPEN CART");
          Parent user;
         try {
-            user = FXMLLoader.load(getClass().getResource("/bookstore/gui/xml/Cart.fxml"));
+            user = FXMLLoader.load(getClass().getResource("Cart.fxml"));
      
         Scene scene = new Scene(user);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -131,4 +138,5 @@ public class ItemController {
         }
     }
 
+  
 }

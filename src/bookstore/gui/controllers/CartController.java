@@ -35,7 +35,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -224,7 +223,7 @@ public class CartController implements Initializable {
           type.setText("Categories : "+listCat);
             disc.setText("Description : \n"+b.getDesciption());
              rating.setText("Rating : "+b.getAverageRatings());
-             usr.setText("Containt Creator : "+b.getOwner());
+             usr.setText("Containt Creator : "+b.getId_owner());
              house.setText("Editing House : "+b.getEditingHouse());
              price.setText("-- Price : "+b.getPrice()+" DTN --");
              System.out.println(b.getCover());
@@ -246,7 +245,7 @@ public class CartController implements Initializable {
         System.out.println("go home");
         Parent user;
         try {
-            user = FXMLLoader.load(getClass().getResource("/bookstore/gui/xml/HomePage.fxml"));
+            user = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         Scene scene = new Scene(user);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.setScene(scene);

@@ -25,6 +25,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -62,7 +63,6 @@ public class AddBooksController implements Initializable {
     List<String> coverExtensions;
     List<Resource> resources_list;
     String cover_path_txt;
-    RegexTests rgx = new RegexTests();
     CategoryCRUD category_crud = new CategoryCRUD();
     BookCRUD book_crud = new BookCRUD();
     ResourceCRUD resource_crud = new ResourceCRUD();
@@ -70,6 +70,8 @@ public class AddBooksController implements Initializable {
     private List<Category> categories;
     @FXML
     private Button cancel_btn;
+    @FXML
+    private TextArea description;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -105,7 +107,7 @@ public class AddBooksController implements Initializable {
         Resource resource=new Resource();
         for (File file : f) {
             try {
-             resource = new Resource(file.getAbsolutePath());
+             resource = new Resource(file.getAbsolutePath(),isbn_txt.getText());
              resource_crud.addResource(resource);
              resources_list.add(resource);
             } catch (Exception ex)
@@ -123,8 +125,9 @@ public class AddBooksController implements Initializable {
         File f = fc.showOpenDialog(null);
         if (f != null) {
             try{
-            cover_path.setText(f.getAbsolutePath());
-            cover_path_txt = f.getAbsolutePath();
+           cover_path.setText(f.getAbsolutePath());
+          //  cover_path_txt = f.getAbsolutePath();
+          cover_path_txt = f.getName();
             }catch (Exception ex)
             {
                 CustomAlert.showErrorAlert("Error", "Error while adding image:"+ex.getMessage());
@@ -147,10 +150,10 @@ public class AddBooksController implements Initializable {
                 || resources_list.isEmpty()
                 || cover_path_txt.equals("") == true) {
             CustomAlert.showErrorAlert("Form Error!", "Please fill all the fields");
-        } else if (!(rgx.IsvalidIsbn(isbn_txt.getText())
-                && rgx.isValidPrice(price_txt.getText())
-                && rgx.containsOnlyLettersAndSpaces(editingHouse_txt.getText())
-                && rgx.containsOnlyLettersAndSpaces(author_txt.getText()))) {
+        } else if (!(RegexTests.IsvalidIsbn(isbn_txt.getText())
+                && RegexTests.isValidPrice(price_txt.getText())
+                && RegexTests.containsOnlyLettersAndSpaces(editingHouse_txt.getText())
+                && RegexTests.containsOnlyLettersAndSpaces(author_txt.getText()))) {
             CustomAlert.showErrorAlert("Form Error!", "Invalid data");
             return;
         } else {
@@ -170,15 +173,16 @@ public class AddBooksController implements Initializable {
                          editingHouse_txt.getText(),
                          checked_categories,
                          resources_list,
-                         cover_path_txt);
-                book_crud.addBook(b);
+                         cover_path_txt,
+                         description.getText());
+                         book_crud.addBook(b);
             } catch (Exception ex) {
                 CustomAlert.showErrorAlert("Error", "Error while creating Book"+ex.getMessage());
                 book_created = false;
 
             }
             }
-            if (book_created) {
+            if (book_created==true) {
                 CustomAlert.showInformationAlert("Book created ", "The book was created successfully!");
             }
         }
@@ -192,6 +196,15 @@ public class AddBooksController implements Initializable {
     private void closeAction(ActionEvent event) {
                 ((Node) (event.getSource())).getScene().getWindow().hide();
 
+    }
+    
+    public void clear()
+    {
+        isbn_txt.clear();
+        author_txt.clear();
+        description.clear();
+        editingHouse_txt.clear();
+        price_txt.clear();
     }
 
 }

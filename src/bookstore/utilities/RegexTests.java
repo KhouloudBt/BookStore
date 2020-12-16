@@ -11,27 +11,38 @@ import java.util.regex.*;
  */
 public class RegexTests {
     
-    public boolean isAvalidCategory (String str)
+    public static  boolean isAvalidCategory (String str)
     {
         return Pattern.matches("[[A-z]+[\\u0020-_&]]+",str);
     }
-    public boolean containsOnlyLettersAndSpaces(String str)
+    public  static boolean containsOnlyLettersAndSpaces(String str)
     {
       return Pattern.matches("[[A-Z-a-z]+\\u0020]+",str);
     }
-    public boolean IsvalidIsbn( String isbn)
+    public static boolean IsvalidIsbn( String isbn)
     {
         return (isbn.length()==0 || Pattern.matches("[0-9(-)$]+",isbn));
     }
-    public Boolean isValidMail(String mail)
+    public static  Boolean isValidMail(String mail)
     {
         return Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$",mail);
     }
-       public Boolean isValidPrice(String price)
+       public static Boolean isValidPrice(String price)
     {
         return Pattern.matches("[0-9]+([,.][0-9]{1,2})?",price);
     }
     
-    
+    public static boolean isAvalidPhone (String str)
+    {
+        return (str.length()==0 || Pattern.matches("[0-9(-)$]+",str));
+    }
+    String passwordPattern = "^(?=.*[0-9])"
+                       + "(?=.*[a-z])(?=.*[A-Z])"
+                       + "(?=.*[@#$%^&+=])"
+                       + "(?=\\S+$).{8,20}$";
+     public static boolean isValidPassword (String str)
+    {
+        return (Pattern.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\\\S+$).{8,20}$",str));
+    }
    
 }

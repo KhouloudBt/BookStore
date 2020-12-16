@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="800" prefWidth="1200.0" stylesheets="@cart.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.CartController">   <children>
+<AnchorPane id="AnchorPane" prefHeight="800" prefWidth="1200.0" stylesheets="@cart.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.CartController">   <children>
       <ListView fx:id="bookList" fixedCellSize="-100.0" layoutX="38.0" layoutY="344.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#myBooks" prefHeight="254.0" prefWidth="466.0" style="-fx-background-radius: 25px; -fx-font-family: fort; -fx-border-radius: 25px; -fx-padding: 10px; font size: 24px;">
          <cursor>
             <Cursor fx:constant="CROSSHAIR" />
@@ -240,7 +240,7 @@
          <children>
             <ImageView fx:id="homeImg" fitHeight="80.0" fitWidth="79.0" layoutX="16.0" layoutY="7.0" onMouseClicked="#goHome" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/home.PNG" />
+                  <Image url="@../xml/img/home.PNG" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />

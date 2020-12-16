@@ -20,22 +20,8 @@ public class BookStore {
 
     public static void main(String[] args) {
 
-        // TODO code application logic here        
-        MyConnection cn = MyConnection.getInstance();
-//        Book bk = new Book(67889,"Khouloud","Rami",5.f,"hello");
-//        BookCRUD br= new BookCRUD();
-//        br.addBook(bk);
-//        Category cat= new Category("Romance","For romantic books");
-//        CategoryCRUD catcr= new  rgxCategoryCRUD();
-//        catcr.addCategory(cat);
-    RegexTests rgx= new RegexTests();
-        System.out.println(rgx.containsOnlyLettersAndSpaces("Sience fiction"));
-/*
-        RegexTests rgx= new RegexTests();
-        System.out.println(rgx.isAvalidCategory("khouloud Ben Taoues"));
-        */
-
-
+        System.out.println(RegexTests.isValidPassword("ABC.info13"));
+        
     }
     
 }

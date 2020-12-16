@@ -15,7 +15,6 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bookstore.gui.controllers.HomePageController">
    <top>
       <HBox prefHeight="59.0" prefWidth="1200.0" spacing="10.0">
@@ -25,7 +24,7 @@
                   <Insets bottom="10.0" left="10.0" top="10.0" />
                </HBox.margin>
                <image>
-                  <Image url="@img/books.png" />
+                  <Image url="@../xml/img/books.png" />
                </image>
             </ImageView>
             <Label prefHeight="99.0" prefWidth="260.0" text="BOOK Store Avengers">
@@ -69,6 +68,11 @@
             <JFXButton prefHeight="63.0" prefWidth="117.0" text="SignUp" />
             <JFXButton prefHeight="63.0" prefWidth="117.0" text="LogIn" />
             <JFXButton prefHeight="63.0" prefWidth="117.0" text="Cart" onMouseClicked="#oppenCart" />
+            <JFXButton fx:id="return_btn" buttonType="RAISED" onAction="#Return" ripplerFill="BLACK" text="Return">
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin>
+            </JFXButton>
          </children>
          <BorderPane.margin>
             <Insets />
@@ -98,12 +102,12 @@
          <center>
             <HBox prefHeight="750.0" prefWidth="1150.0" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane prefHeight="538.0" prefWidth="1206.0" styleClass="transparent" stylesheets="@homepage.css">
+                  <ScrollPane prefHeight="516.0" prefWidth="1139.0" styleClass="transparent" stylesheets="@homepage.css">
                      <HBox.margin>
                         <Insets bottom="25.0" left="50.0" right="50.0" />
                      </HBox.margin>
                      <content>
-                        <GridPane fx:id="grid">
+                        <GridPane fx:id="grid" prefHeight="507.0" prefWidth="1092.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>

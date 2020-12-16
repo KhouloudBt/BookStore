@@ -22,7 +22,7 @@ public class Book {
     private double averageRatings=0.0f;
     private int nbRatings=0;
     private String EditingHouse;
-    private User owner;
+    private int id_owner;
     private String cover;
     private String desciption;
 
@@ -39,7 +39,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(String isbn,float price, String title, String Author, String EditingHouse,List <Category> categories,List<Resource> resourcesList, String cover) {
+    public Book(String isbn,float price, String title, String Author, String EditingHouse,List <Category> categories,List<Resource> resourcesList, String cover, String description) {
         this.isbn = isbn;
         this.price=price;
         this.title = title;
@@ -48,6 +48,19 @@ public class Book {
         this.cover = cover;
         this.resourcesList=resourcesList;
         this.categories=categories;
+        this.desciption= description;
+    }
+       public Book(String isbn,float price, String title, String Author, String EditingHouse,List <Category> categories,List<Resource> resourcesList, String cover, String description, int id_owner) {
+        this.isbn = isbn;
+        this.price=price;
+        this.title = title;
+        this.Author = Author;
+        this.EditingHouse = EditingHouse;
+        this.cover = cover;
+        this.resourcesList=resourcesList;
+        this.categories=categories;
+        this.desciption= description;
+        this.id_owner=id_owner;
     }
 
     public String getIsbn() {
@@ -114,14 +127,15 @@ public class Book {
         this.EditingHouse = EditingHouse;
     }
 
-    public User getOwner() {
-        return owner;
+    public int getId_owner() {
+        return id_owner;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setId_owner(int id_owner) {
+        this.id_owner = id_owner;
     }
 
+   
     public String getCover() {
         return cover;
     }
@@ -130,11 +144,6 @@ public class Book {
         this.cover = cover;
     }
 
-    @Override
-    public String toString() {
-        return String.format("|%s\t",title) + String.format("| %s\t",Author)  +String.format("| price : %sDNT\t",price)
-                + String.format("| Ratings : %s\t",averageRatings);
-    }
     public List<Category> getCategories() {
         return categories;
     }
@@ -167,6 +176,12 @@ public class Book {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("|%s\t",title) + String.format("| %s\t",Author)  +String.format("| price : %sDNT\t",price)
+                + String.format("| Ratings : %s\t",averageRatings);
     }
 
 }
